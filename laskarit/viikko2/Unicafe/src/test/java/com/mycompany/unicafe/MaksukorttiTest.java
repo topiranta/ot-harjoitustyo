@@ -39,7 +39,7 @@ public class MaksukorttiTest {
         kortti.lataaRahaa(1000);
         kortti.otaRahaa(610);
         
-        assertEquals("saldo: 4.0", kortti.toString());
+        assertEquals(400, kortti.saldo());
         
     }
     
