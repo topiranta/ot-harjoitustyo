@@ -1,10 +1,10 @@
 # Readme
 
-Readme ver. 0.2 26.3.2019
+Readme ver. 0.2.1 26.3.2019
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](https://github.com/topiranta/ot-harjoitustyo/dokumentointi/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/topiranta/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 
 ## Viikon 1 tiedostot
 
