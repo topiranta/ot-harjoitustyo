@@ -1,8 +1,8 @@
 # Readme
 
-*Readme ver. 0.4.0 2.4.2019*
+*Readme ver. 0.4.1 2.4.2019*
 
-Sovelluksen tarkoituksen on mahdollistaa (Philips Hue -älyvalojen)[https://developers.meethue.com] automaattinen 
+Sovelluksen tarkoituksen on mahdollistaa [Philips Hue -älyvalojen](https://developers.meethue.com) automaattinen 
 päivittäminen niin, että vuorokaudenajasta ja auringonlaskun ajankohdasta riippuen valojen väri ja kirkkaus muuttuvat 
 sopiviksi.
 
