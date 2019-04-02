@@ -8,11 +8,6 @@
     <dependencies>
         <dependency>
             <groupId>external-libraries</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1-bundle</version>
-        </dependency>
-        <dependency>
-            <groupId>external-libraries</groupId>
             <artifactId>json-simple-111</artifactId>
             <version>1.1.1</version>
         </dependency>

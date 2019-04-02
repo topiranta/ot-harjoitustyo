@@ -8,8 +8,6 @@ public class Bridge {
     private String ip;
     private String name;
     private String appId;
-    private ArrayList<Lamp> allLamps = new ArrayList<>();
-    private ArrayList<Lamp> lampsToUpdate = new ArrayList<>();
     
     public Bridge(String ip, String name) {
         
