@@ -39,8 +39,6 @@ Metodi käyttää postMessage-metodia autentikoidakseen sovelluksen käyttäjän
 virheen autentikoinnin epäonnistuessa. Autentikoinnin epäonnistuminen ei kuitenkaan estä perustamasta Bridge-oliota 
 sovellukseen.
 
-
-
 ### postMessage
 
 postMessage-metodi tekee POST-kutsun sille parametrina annettuun url-osoitteeseen. Myös varsinainen 
@@ -58,9 +56,9 @@ Metodi välittää sille merkkijonoparametrina annetun viestin haluttuun urliin.
 
 Metodit osaavat ottaa yhteyden ja lähettää viestejä ja hakea paluuarvoja yhteyden yli.
 
-## Käyttöliittymä (TextUi.java)
+### topiranta.lightapplication.ui (TextUi.java)
 
-Sovellus käyttää vielä tekstipohjaista käyttöliittymää, jossa on kuusi toimintoa:
+Sovellus käyttää vielä tekstipohjaista käyttöliittymää, jossa on seuraavat toiminnot:
 
 * Uuden valo-ohjaimen asettaminen ja konfigurointi
 * Valo-ohjaimen nimen asettaminen
@@ -71,7 +69,7 @@ Sovellus käyttää vielä tekstipohjaista käyttöliittymää, jossa on kuusi t
 * Kaikkien valojen sammuttaminen
 * Poistuminen sovelluksesta
 
-Käyttöliittymälle annetaan sekä Scanner-olio että sovelluslogiikka (Application-olio).
+Käyttöliittymälle annetaan sekä Scanner-olio että sovelluslogiikka (Application-olio). Käyttöliittymä käyttää vain sovelluslogiikan metodeja.
 
 ## Kolmannen osapuolen kirjastot
 
@@ -90,3 +88,7 @@ Kirjastoa ei ole muokattu tätä sovellusta varten.
 ## Pysyväistallennus
 
 Sovelluksessa ei ole vielä pysyväistallennusta.
+
+## Sekvenssikaavio: käyttäjä autentikoi sovelluksen fyysiselle valo-ohjaimelle
+
+![Sekvenssikaavio: autentikointi](https://github.com/topiranta/ot-harjoitustyo/blob/master/dokumentointi/kuvat/lightapplication-auth-sequence-diagram.png)
