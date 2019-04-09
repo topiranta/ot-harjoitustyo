@@ -104,6 +104,8 @@ public class Utils {
             
         } catch (Exception e) {
             
+            connection.disconnect();
+            
             throw new Exception("Put failed: " + e);
             
         }
