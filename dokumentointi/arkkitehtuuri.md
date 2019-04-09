@@ -1,8 +1,8 @@
 # Arkkitehtuurikuvaus
 
-*Arkkitehtuurikuvaus, ver 0.2, 9.4.2019*
+*Arkkitehtuurikuvaus, ver 0.3, 9.4.2019*
 
-Sovellus koostuu tällä hetkellä Main-metodin lisäksi eriytetystä käyttöliittymästä sekä sovelluslogiikasta, Hue-laitteita kuvaavista luokista sekä staattisia metodeja sisältävästä Utils-luokasta. Alla on kuvattu pääpiirteittäin sovelluksen paketit ja niissä olevat luokat, muut kuin kurssin vaatimat kolmannen osapuolen kirjastoriippuvuudet sekä muutamia käyttötapauksia sekvenssikaaviona.
+Sovellus koostuu tällä hetkellä Main-metodin lisäksi eriytetystä käyttöliittymästä sekä sovelluslogiikasta, Hue-laitteita kuvaavista luokista sekä staattisia metodeja sisältävästä Utils-luokasta. Alla on kuvattu pääpiirteittäin sovelluksen paketit ja niissä olevat luokat sekä muut kuin kurssin vaatimat kolmannen osapuolen kirjastoriippuvuudet. Dokumentin alaosasta löytyy myös sekvenssikaavio, jossa kuvataan sovelluksen toiminta, kun käyttäjä autentikoi sovelluksen lähiverkossa olevalle valo-ohjaimelle.
 
 ## topiranta.lightapplication (Main.java)
 
@@ -56,7 +56,7 @@ Metodi välittää sille merkkijonoparametrina annetun viestin haluttuun urliin.
 
 Metodit osaavat ottaa yhteyden ja lähettää viestejä ja hakea paluuarvoja yhteyden yli.
 
-### topiranta.lightapplication.ui (TextUi.java)
+## topiranta.lightapplication.ui (TextUi.java)
 
 Sovellus käyttää vielä tekstipohjaista käyttöliittymää, jossa on seuraavat toiminnot:
 
