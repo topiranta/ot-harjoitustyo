@@ -61,7 +61,6 @@ public class Application {
                 
                 try {
                     
-                    System.out.println(lamp.getPutUrl());
                     lamp.turnOff();
                     
                 } catch (Exception e) {

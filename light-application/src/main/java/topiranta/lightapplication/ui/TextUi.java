@@ -40,7 +40,7 @@ public class TextUi {
                 String ip = reader.nextLine();
                 
                 System.out.println("What do you want to call your bridge?");
-                System.out.print(">");
+                System.out.print("> ");
                 String name = reader.nextLine();
                 
                 System.out.println("Please press you bridge connection button before proceeding. Insert \"c\" when you are ready to continue or \"x\" to cancel.");
