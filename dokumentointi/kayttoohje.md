@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Käyttöohje ver 0.1, päivitetty 2.4.2019
+*Käyttöohje ver 0.2, 9.4.2019*
 
 ## Sovelluksen käyttäjälle
 
@@ -24,5 +24,10 @@ lähiverkkoon. Sovelluksessa voi silti tehdä epäonnistuneen autentikoinnin ja 
 
 ## Lähdekoodin käyttäjälle
 
-Sovelluksen lähdekoodin mukana tulee JSON.Simple-kirjasto, joka saattaa täytyä erikseen konfiguroida riippuvuudeksi 
-ohjelmointiympäristölle.
+### Riippuvuudet (Dependencies)
+
+Sovelluksen lähdekoodin mukana tulee JSON.Simple-kirjasto, joka on osoitettu riippuvuudeksi pom.xml -tiedostossa. Riippuvuutta ei tarvitse osoittaa erikseen ohjelmointiympäristölle.
+
+### Main-luokan asettaminen
+
+NetBeans ei välttämättä tunnista ensimmäisellä suorituskerralla Main-luokkaa sovellusta ajettaessa. Luokan voi osoittaa NetBeansille klikkaamalla projektia Projects-välilehdellä hiiren oikealla ja valitsemalla valikosta "Properties". Main-luokan voi asettaa avautuvan ikkunan kohdassa Run, jonka Main Class -riville tallennetaan arvo "topiranta.lightapplication.Main".
