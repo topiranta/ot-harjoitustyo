@@ -4,18 +4,24 @@
 
 ## Sovelluksen käyttäjälle
 
-Sovellus käynnistää tekstikäyttöliittymän, jossa on mahdollista asettaa sovelluksen kanssa samassa paikallisverkossa 
-oleva Philips Hue -älyvalo-ohjain sovellukseen. 
+Sovellus käynnistää tekstikäyttöliittymän, jossa on mahdollista:
 
-Käyttäjä voi konfiguroida sovellukseen uuden valo-ohjaimen. Konfigurointivaiheessa sovellus kysyy valo-ohjaimen osoitetta sisäverkossa sekä valo-ohjaimelle annettavaa nimeä.
+* Asettaa ja autentikoida sovellus lähiverkossa olevalle Philips Hue -valo-ohjaimelle
+* Muuttaa edellisiä konfigurointeja
+* Hakea kaikki konfiguroituun valo-ohjaimeen liitetyt älyvalot
+* Sammuttaa kaikki haetut älyvalot
 
-Näiden tietojen antamisen jälkeen käyttäjän on painettava valo-ohjaimen painiketta, jonka jälkeen ohjain sallii 
-autentikoitumisen. Tässä vaiheessa käyttäjä voi jatkaa autentikoitumisvaiheeseen sovelluksessa ja sovellus ilmoittaa 
-autentikoinnin onnistumisesta.
+### Valo-ohjaimen konfigurointi
 
-Vaikka autentikointi ei onnistuisi, tallentaa sovellus kuitenkin nimi- ja ip-osoite-tiedon.
+Käyttäjän on tiedettävä lähiverkossa olevan valo-ohjaimen IP-osoite. Käyttäjä syöttää tekstikäyttöliittymästä sovellukselle valo-ohjaimen IP-osoitteen lähiverkossa ja antaa ohjaimelle nimen. Tämän jälkeen käyttäjän on painettava valo-ohjaimen päällä olevaa yhdistämispainiketta, jonka jälkeen käyttäjä voi autentikoida sovelluksen valo-ohjaimelle.
 
-Konfiguroinnin jälkeen valo-ohjaimen nimeä ja ip-osoitetta voi muuttaa.
+### Lamppujen hakeminen
+
+Kun valo-ohjain on konfiguroitu, voi käyttäjä hakea kaikki ohjaimeen kytketyt lamput.
+
+### Lamppujen sammuttaminen
+
+Kaikki lamput voi sammuttaa, kunhan ne on ensin haettu ohjaimelta.
 
 ## Sovelluksen testaajalle
 
