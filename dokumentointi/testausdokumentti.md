@@ -13,6 +13,8 @@ Sovelluksen kehittäjä ei toistaiseksi ole keksinyt hyvää tapaa testata sovel
 
 Sovelluksen kehittäjä pyrkii todennäköisesti etsimään kolmannen osapuolen palvelun, johon Utils-luokan metodit voivat ottaa yhteyden mistä tahansa vakiomuotoisen URL-osoitteen yli ja johon voi etukäteen konfiguroida testejä varten halutut vastaukset, jolloin myös muita metodeja pääsee järkevästi testaamaan.
 
-## Maven, Jacoco ja testikattavuus
+## Maven, Jacoco, Checkstyle
 
 Sovellus on noudettu Github-repositoriosta eri tietokoneelle kuin missä sovellus on kehitetty. Samalla on todennettu, että siitä saa ajettua Jacoco-testikattavuusraportin, kunhan Maven-testit on ensin ajettu.
+
+Samoin Checkstyle on ajettavissa, kunhan Mavenilla on ensin ajanut jxr:jxr -goalin ensin.

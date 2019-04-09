@@ -35,8 +35,7 @@ public class Utils {
         String message = "{\"devicetype\":\"ot-lamp-application\"}";
         
         JSONArray response = Utils.postMessage(postURL, message);
-        
-        JSONObject responseObject = (JSONObject)response.get(0);
+        JSONObject responseObject = (JSONObject) response.get(0);
         JSONObject success = (JSONObject) responseObject.get("success");
         
         if (success == null || success.toString().equals("")) {
@@ -57,7 +56,7 @@ public class Utils {
         writeMessage(connection, message);
         int responseCode = connection.getResponseCode();
         
-        if(responseCode != 200) {
+        if (responseCode != 200) {
             
             connection.disconnect();
             throw new Exception("" + responseCode);
@@ -77,7 +76,7 @@ public class Utils {
         HttpURLConnection connection = openNewConnection(url, "GET");
         int responseCode = connection.getResponseCode();
         
-        if(responseCode != 200) {
+        if (responseCode != 200) {
             
             connection.disconnect();
             throw new Exception("" + responseCode);
@@ -120,7 +119,7 @@ public class Utils {
         
         if (!requestMethod.equals("GET")) {
             
-               connection.setDoOutput(true);     
+            connection.setDoOutput(true);     
             
         }
 
@@ -140,18 +139,18 @@ public class Utils {
     
     public static String getResponse(HttpURLConnection connection) throws Exception {
         
-            StringBuilder sBuilder = new StringBuilder();
-            Scanner reader = new Scanner(connection.getInputStream());
+        StringBuilder sBuilder = new StringBuilder();
+        Scanner reader = new Scanner(connection.getInputStream());
             
-            while (reader.hasNext()) {
+        while (reader.hasNext()) {
                 
-                sBuilder.append(reader.nextLine());
+            sBuilder.append(reader.nextLine());
                 
-            }
+        }
             
-            reader.close();
+        reader.close();
             
-            return sBuilder.toString();
+        return sBuilder.toString();
         
     }
     
