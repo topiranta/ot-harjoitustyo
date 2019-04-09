@@ -1,7 +1,8 @@
-package tr.ot.light.application;
+package topiranta.lightapplication.ui;
 
 import java.util.*;
 import java.io.*;
+import topiranta.lightapplication.logics.Application;
 
 public class TextUi {
     
@@ -93,6 +94,19 @@ public class TextUi {
                 
                 this.printCommands();
                 
+                
+            } else if (input.equals("6")) {
+                
+                System.out.println(this.application.getAllLamps());
+                
+            } else if (input.equals("7")) {
+                
+                System.out.println(this.application.turnOffAllLamps());
+                
+            } else if (input.equals("99")) {
+                
+                System.out.println("Oh you! You found a secret testing command. No testing was, however, conducted.");
+                
             } else {
                 
                 System.out.println("Unknown command! Insert 5 to print all commands.");
@@ -113,6 +127,8 @@ public class TextUi {
         System.out.println("3 - change bridge IP address");
         System.out.println("4 - print current status");
         System.out.println("5 - print commands");
+        System.out.println("6 - fetch all lights configured to the bridge");
+        System.out.println("7 - turn off all lights");
         System.out.println("0 - exit");
         System.out.println("");
     }

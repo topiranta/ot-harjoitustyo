@@ -1,7 +1,8 @@
 
-package tr.ot.light.application;
+package topiranta.lightapplication.devices;
 
 import java.util.*;
+
 
 public class Bridge {
     
@@ -38,7 +39,7 @@ public class Bridge {
     
     public void setAppId(String appId) {
         
-        this.appId = appId;;
+        this.appId = appId;
         
     }
     
