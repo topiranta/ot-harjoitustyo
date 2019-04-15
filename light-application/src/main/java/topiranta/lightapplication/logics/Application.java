@@ -2,8 +2,9 @@
 package topiranta.lightapplication.logics;
 
 import topiranta.lightapplication.devices.*;
-import topiranta.lightapplication.connections.Utils;
+import topiranta.lightapplication.utils.Connections;
 import java.util.*;
+import topiranta.lightapplication.utils.DeviceOperations;
 
 public class Application {
     
@@ -17,7 +18,7 @@ public class Application {
         
         try {
             
-            String appId = Utils.authenticateApplication(ip);
+            String appId = DeviceOperations.authenticateApplication(ip);
             this.bridge.setAppId(appId);
             
         
@@ -37,7 +38,7 @@ public class Application {
             
             try {
                 
-                this.lamps = Utils.getAllLamps(this.bridge);
+                this.lamps = DeviceOperations.getAllLamps(this.bridge);
             
             } catch (Exception e) {
                 

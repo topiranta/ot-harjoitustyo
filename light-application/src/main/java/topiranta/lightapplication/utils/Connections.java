@@ -1,5 +1,5 @@
 
-package topiranta.lightapplication.connections;
+package topiranta.lightapplication.utils;
 
 import java.io.*;
 import java.util.*;
@@ -8,47 +8,9 @@ import org.json.simple.*;
 import topiranta.lightapplication.devices.*;
 
 
-public class Utils {
+public class Connections {
     
 
-    public static ArrayList<Lamp> getAllLamps(Bridge bridge) throws Exception {
-        
-        ArrayList<Lamp> lamps = new ArrayList<>();
-        
-        URL getURL = new URL("http://" + bridge.getIp() + "/api/" + bridge.getAppId() + "/lights");
-        JSONObject response = getJSON(getURL);
-        
-        for (Object object : response.keySet()) {
-            
-            Lamp lamp = new Lamp(Integer.valueOf(object.toString()), bridge);
-            lamps.add(lamp);
-            
-        }
-        
-        return lamps;
-        
-    }
-    
-    public static String authenticateApplication(String bridgeIp) throws Exception {
-        
-        URL postURL = new URL("http://" + bridgeIp + "/api");
-        String message = "{\"devicetype\":\"ot-lamp-application\"}";
-        
-        JSONArray response = Utils.postMessage(postURL, message);
-        JSONObject responseObject = (JSONObject) response.get(0);
-        JSONObject success = (JSONObject) responseObject.get("success");
-        
-        if (success == null || success.toString().equals("")) {
-            
-            throw new Exception("Authentication failed.");
-            
-        }
-        
-        return success.get("username").toString();
-        
-        
-        
-    }
     
     public static JSONArray postMessage(URL url, String message) throws Exception {
         

@@ -1,7 +1,7 @@
 package topiranta.lightapplication.devices;
 
 import java.net.*;
-import topiranta.lightapplication.connections.Utils;
+import topiranta.lightapplication.utils.Connections;
 
 
 public class Lamp {
@@ -25,7 +25,7 @@ public class Lamp {
     
     public void turnOff() throws Exception {
         
-        Utils.putJSON(this.getPutUrl(), "{\"on\": false}");
+        Connections.putJSON(this.getPutUrl(), "{\"on\": false}");
         
     }
     
