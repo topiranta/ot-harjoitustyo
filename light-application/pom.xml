@@ -42,6 +42,7 @@
                 <configuration>
                     <excludes>
                         <exclude>topiranta/lightapplication/ui/**/*</exclude>
+						<exclude>topiranta/lightapplication/devtests/**/*</exclude>
                     </excludes>
                 </configuration>
 				<executions>

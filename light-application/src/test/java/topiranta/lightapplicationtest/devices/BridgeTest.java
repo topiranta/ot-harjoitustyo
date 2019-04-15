@@ -8,12 +8,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-;
+
 
 
 public class BridgeTest {
     
-    Bridge bridge;
+    Bridge bridgeNoAppId;
+    Bridge bridgeAllVariables;
     
     public BridgeTest() {
     }
@@ -29,7 +30,8 @@ public class BridgeTest {
     @Before
     public void setUp() {
         
-        bridge = new Bridge("3.3.3.3", "testBridge");
+        bridgeNoAppId = new Bridge("3.3.3.3", "testBridge");
+        bridgeAllVariables = new Bridge("4.4.4.4", "testBridge2", "testID");
         
     }
     
@@ -40,15 +42,29 @@ public class BridgeTest {
     @Test
     public void twoArgumentConstructorSetsIp() {
         
-        assertEquals("3.3.3.3", bridge.getIp());
+        assertEquals("3.3.3.3", bridgeNoAppId.getIp());
         
     }
     
     @Test
     public void twoArgumentConstructorSetsName() {
         
-        assertEquals("testBridge", bridge.getName());
+        assertEquals("testBridge", bridgeNoAppId.getName());
         
     }
+    
+    @Test
+    public void threeArgumentConstructorSetsThreeValues() {
+        
+        assertTrue(bridgeAllVariables.getName() != null && bridgeAllVariables.getIp() != null && bridgeAllVariables.getAppId() != null);
+    }
+    
+    @Test
+    public void noAppIdConfiguredIsReportedInToString() {
+        
+        assertEquals("Bridge testBridge, IP Address 3.3.3.3, authentication ID for this application not configured.", bridgeNoAppId.toString());
+        
+    }
+
     
 }

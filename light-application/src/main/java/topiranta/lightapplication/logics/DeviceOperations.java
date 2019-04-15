@@ -1,5 +1,5 @@
 
-package topiranta.lightapplication.utils;
+package topiranta.lightapplication.logics;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import topiranta.lightapplication.devices.Bridge;
 import topiranta.lightapplication.devices.Lamp;
+import topiranta.lightapplication.utils.Connections;
 
 
 public class DeviceOperations {
@@ -32,7 +33,18 @@ public class DeviceOperations {
         URL postURL = new URL("http://" + bridgeIp + "/api");
         String message = "{\"devicetype\":\"ot-lamp-application\"}";
         
-        JSONArray response = Connections.postMessage(postURL, message);
+        JSONArray response;
+        
+        try {
+        
+            response = Connections.postMessage(postURL, message);
+        
+        } catch (Exception e) {
+            
+            throw new Exception("Authentication error: " + e);
+            
+        }
+        
         JSONObject responseObject = (JSONObject) response.get(0);
         JSONObject success = (JSONObject) responseObject.get("success");
         

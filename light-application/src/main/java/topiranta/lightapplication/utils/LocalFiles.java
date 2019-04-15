@@ -3,7 +3,7 @@ package topiranta.lightapplication.utils;
 import java.io.*;
 import java.util.*;
 
-public class LocalFileOperations {
+public class LocalFiles {
     
     public static void writeNewFile(String filename, String text) throws Exception {
         
@@ -22,7 +22,6 @@ public class LocalFileOperations {
             while (reader.hasNextLine()) {
                 
                 sBuilder.append(reader.nextLine());
-                sBuilder.append("\n");
                 
             }
             

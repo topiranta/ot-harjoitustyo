@@ -4,7 +4,6 @@ package topiranta.lightapplication.logics;
 import topiranta.lightapplication.devices.*;
 import topiranta.lightapplication.utils.Connections;
 import java.util.*;
-import topiranta.lightapplication.utils.DeviceOperations;
 
 public class Application {
     
@@ -15,16 +14,23 @@ public class Application {
         
         this.bridge = new Bridge(ip, name);
         
+        if (!ip.equals("0.0.0.0")) {
         
-        try {
+            try {
             
-            String appId = DeviceOperations.authenticateApplication(ip);
-            this.bridge.setAppId(appId);
+                String appId = DeviceOperations.authenticateApplication(ip);
+                this.bridge.setAppId(appId);
             
         
-        } catch (Exception e) {
+            } catch (Exception e) {
             
-            return e.getMessage();
+                return e.getMessage();
+            
+            }
+        
+        } else {
+            
+            this.bridge.setAppId("testMode");
             
         }
         
@@ -32,17 +38,25 @@ public class Application {
         
     }
     
-    public String getAllLamps() {
+    public String getAllLampsFromBridge() {
         
         if (this.bridge != null && this.bridge.getAppId() != null) {
             
-            try {
-                
-                this.lamps = DeviceOperations.getAllLamps(this.bridge);
+            if (!this.bridge.getIp().equals("0.0.0.0")) {
             
-            } catch (Exception e) {
+                try {
+
+                    this.lamps = DeviceOperations.getAllLamps(this.bridge);
+
+                } catch (Exception e) {
+
+                    return "Error: " + e;
+
+                }
+            
+            } else {
                 
-                return "Error: " + e;
+                this.lamps = UserTestMode.getLampTestSet(this.bridge);
                 
             }
             
@@ -98,6 +112,55 @@ public class Application {
             this.bridge.setIp(ip);
             
         }
+    }
+    
+    public ArrayList<Lamp> getAllLamps() {
+        
+        return this.lamps;
+        
+    }
+    
+    public String saveBridgeConfiguration() {
+        
+        if (this.bridge != null) {
+            
+            try {
+            
+                ConfigurationOperations.saveBridgeConfig(this.bridge);
+                
+                return "Bridge configuration saved";
+            
+            } catch (Exception e) {
+                
+                return "Error while trying to save configuration: " + e;
+                
+            }
+        }
+        
+        return "No bridge configured. Please configure a bridge before saving.";
+        
+    }
+    
+    public String loadBridgeConfiguration() {
+        
+        if (this.bridge == null) {
+            
+            this.bridge = new Bridge(" ", " ");
+            
+        }
+        
+        try {
+        
+            ConfigurationOperations.loadBridgeConfig(this.bridge);
+            
+            return "Successfully loaded bridge configurations";
+        
+        } catch (Exception e) {
+            
+            return "Failed to load configurations: " + e;
+            
+        }
+        
     }
     
     

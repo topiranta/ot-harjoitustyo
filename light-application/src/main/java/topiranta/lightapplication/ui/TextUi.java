@@ -35,7 +35,7 @@ public class TextUi {
                 
             } else if (input.equals("1")) {
                 
-                System.out.println("What is the IP address of your bridge?");
+                System.out.println("What is the IP address of your bridge? (insert 0.0.0.0 to use application in user test mode)");
                 System.out.print("> ");
                 String ip = reader.nextLine();
                 
@@ -97,11 +97,19 @@ public class TextUi {
                 
             } else if (input.equals("6")) {
                 
-                System.out.println(this.application.getAllLamps());
+                System.out.println(this.application.getAllLampsFromBridge());
                 
             } else if (input.equals("7")) {
                 
                 System.out.println(this.application.turnOffAllLamps());
+                
+            } else if (input.equals("8")) {
+                
+                System.out.println(this.application.saveBridgeConfiguration());
+                
+            } else if (input.equals("9")) {
+                
+                System.out.println(this.application.loadBridgeConfiguration());
                 
             } else if (input.equals("99")) {
                 
@@ -129,6 +137,8 @@ public class TextUi {
         System.out.println("5 - print commands");
         System.out.println("6 - fetch all lights configured to the bridge");
         System.out.println("7 - turn off all lights");
+        System.out.println("8 - save current bridge configuration");
+        System.out.println("9 - load existing bridge configuration");
         System.out.println("0 - exit");
         System.out.println("");
     }
