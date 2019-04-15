@@ -72,18 +72,22 @@ public class Application {
         
         if (this.lamps != null && this.lamps.size() > 0) {
             
-            for (Lamp lamp : this.lamps) {
-                
-                try {
-                    
-                    lamp.turnOff();
-                    
-                } catch (Exception e) {
-                    
-                    return "Error: " + e;
-                    
+            if (!this.bridge.getIp().equals("0.0.0.0")) {
+            
+                for (Lamp lamp : this.lamps) {
+
+                    try {
+
+                        lamp.turnOff();
+
+                    } catch (Exception e) {
+
+                        return "Error: " + e;
+
+                    }
+
                 }
-                
+            
             }
             
             return "All lamps turned off";

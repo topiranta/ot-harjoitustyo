@@ -84,6 +84,20 @@ public class ApplicationTest {
         
         assertEquals("Bridge loadTestBridgeName, IP Address loadTestIp, authentication ID for this application loadTestAppId", application.toString());
     }
+    
+    @Test
+    public void noLampsTurnedOffWhenNoLampsFetched() {
+        
+        assertEquals("No lamps configured", application.turnOffAllLamps());
+        
+    }
+    
+    @Test
+    public void turnOffAllLampsReturnsSuccessInUserTestMode() {
+        
+        application.getAllLampsFromBridge();
+        assertEquals("All lamps turned off", application.turnOffAllLamps());
+    }
 
     
 }
