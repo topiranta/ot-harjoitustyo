@@ -13,7 +13,7 @@ public class ConfigurationOperations {
         
         } catch (Exception e) {
             
-            throw new Exception ("Saving configuration failed: " + e);
+            throw new Exception("Saving configuration failed: " + e);
             
         }
     }
@@ -29,7 +29,7 @@ public class ConfigurationOperations {
             
         } catch (Exception e) {
             
-            throw new Exception ("Loading configuration failed: " + e);
+            throw new Exception("Loading configuration failed: " + e);
             
         }
         
