@@ -10,6 +10,8 @@ Sovellus käynnistää tekstikäyttöliittymän, jossa on mahdollista:
 * Muuttaa edellisiä konfigurointeja
 * Hakea kaikki konfiguroituun valo-ohjaimeen liitetyt älyvalot
 * Sammuttaa kaikki haetut älyvalot
+* Tallentaa valo-ohjaimen konfigurointi
+* Ladata tallennettu ohjainkonfigurointi
 
 ### Valo-ohjaimen konfigurointi
 
@@ -25,8 +27,9 @@ Kaikki lamput voi sammuttaa, kunhan ne on ensin haettu ohjaimelta.
 
 ## Sovelluksen testaajalle
 
-Sovelluksessa ei ole vielä erillistä emulointia valo-ohjaimelle, joten sen autentikointi vaatii Hue-ohjainta 
-lähiverkkoon. Sovelluksessa voi silti tehdä epäonnistuneen autentikoinnin ja sen käyttöliittymää voi käyttää.
+Sovelluksessa on mahdollista syöttää testi-ip-osoite käyttäjätestausta varten silloin, kun lähiverkossa ei ole käytettävissä valo-ohjainta tai siihen liityettyjä älyvaloja. Testi-ip on 0.0.0.0 ja se annetaan valo-ohjainta konfiguroidessa. Sovellus osaa tällöin olla ottamatta yhteyttä verkkoyhteyden yli ja siinä on mahdollista emuloida valojen hakemista valo-ohjaimelta ja konfigurointien tallentamista.
+
+Toisin sanoen testausmoodissa käyttöliittymän kaikki toiminnot ovat käytettävissä.
 
 ## Lähdekoodin käyttäjälle
 
