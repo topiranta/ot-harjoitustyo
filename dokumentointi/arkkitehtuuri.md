@@ -1,6 +1,6 @@
 # Arkkitehtuurikuvaus
 
-*Arkkitehtuurikuvaus, ver 0.4, 16.4.2019*
+*Arkkitehtuurikuvaus, ver 0.4.1, 16.4.2019*
 
 ## Sovelluksen pakettirakenne
 
@@ -32,11 +32,11 @@ Paketti sisältää Hue-valo-ohjainta ja lamppua kuvaavat luokat. Bridge-luokall
 
 Lamppu tarjoaa metodin oman PUT-urlinsa hakemiseksi ja lamppu osaa Utils-luokan yhteydenottometodeja hyödyntäen sammuttaa itsensä.
 
-## topiranta.lightapplication.utils (Connections.java, LocalFiles.java)
+### topiranta.lightapplication.utils (Connections.java, LocalFiles.java)
 
 Utils-paketti sisältää staattiset metodit pysyväistallennukseen ja -lataukseen sekä URL-yhteydenottoihin. Kaikki tämän paketin metodit ovat valosovelluksen logiikasta irrallisia yleisiä metodeja, joten niitä voisi sellaisenaan käyttää minkä tahansa muun sovelluksen kanssa, joka vastaavia toimintoja käyttää.
 
-## topiranta.lightapplication.ui (TextUi.java)
+### topiranta.lightapplication.ui (TextUi.java)
 
 Sovellus käyttää vielä tekstipohjaista käyttöliittymää, jossa on seuraavat toiminnot:
 
