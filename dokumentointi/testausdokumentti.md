@@ -1,17 +1,14 @@
 # Testausdokumentti
 
-Testausdokumentti ver. 0.2, päivitetty 9.4.2019
+*Testausdokumentti ver. 0.3, 16.4.2019*
 
 ## Testit
 
-Sovelluksella on kaksi testiä, jotka testaavat, tallentaako toinen Bridge-luokan konstruktori parametreina saamansa 
-IP-osoitteen sekä valo-ohjaimen nimen Bridge-oliolle.
+Sovelluksen testien rakenne noudattaa sovelluksen pakkausrakennetta. Sovelluksen testien rivikattavuus on hieman vajaa 50%, kun käyttöliittymäkoodia ei oteta huomioon. Sovelluksen testit testaavat valo-ohjainolion toimintaa, varsinaista sovelluslogiikkaa sekä URL-yhteydenottometodeja.
 
-## Ongelmat testisuunnittelussa
+## Testien ulkopuolisia riippuvuuksia
 
-Sovelluksen kehittäjä ei toistaiseksi ole keksinyt hyvää tapaa testata sovellusta, jonka merkittävä osa perustuu erilaisiin http-protokollan yli tapahtuviin GET-, POST ja SET-yhteydenottoihin. Siksi sovellukselle ei ole kirjoitettu kattavampaa testausta. Sovelluksen kehittäjä pyrkii keksimään ratkaisun, jolla yhteydenottometodeja voidaan asiallisesti testata ja testauskattavuus siten saada kohdilleen ilman, että testejä on ajettava samassa lähiverkossa sijaitsevan fyysisen Philips Hue -valo-ohjaimen kanssa tai testit muuten keskittyisivät turhanpäiväiseen getterien ja setterin kokeiluihin.
-
-Sovelluksen kehittäjä pyrkii todennäköisesti etsimään kolmannen osapuolen palvelun, johon Utils-luokan metodit voivat ottaa yhteyden mistä tahansa vakiomuotoisen URL-osoitteen yli ja johon voi etukäteen konfiguroida testejä varten halutut vastaukset, jolloin myös muita metodeja pääsee järkevästi testaamaan.
+Koska sovellus käyttää paljon yhteyksiä URL-osotteiden yli, on sovelluksessa testi, joka käyttää getJSON-metodia [JSONPlaceholder-testipalvelussa](https://jsonplaceholder.typicode.com/) olevan JSON-tiedon hakemiseen ja sen sisällön oikeellisuuden tarkistamiseen. Tämän vuoksi sanotun palvelun ollessa estynyt palvelemaan testejä tai palvelun muuttuessa ei yksi testi mene läpi.
 
 ## Maven, Jacoco, Checkstyle
 
