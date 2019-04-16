@@ -1,6 +1,6 @@
 # Readme
 
-*Readme ver. 0.6.0 16.4.2019*
+*Readme ver. 0.6.1 16.4.2019*
 
 Sovelluksen tarkoituksen on mahdollistaa [Philips Hue -älyvalojen](https://developers.meethue.com) automaattinen 
 päivittäminen niin, että vuorokaudenajasta ja auringonlaskun ajankohdasta riippuen valojen väri ja kirkkaus muuttuvat 
@@ -24,7 +24,7 @@ Sovellus on kehitysvaiheensa alussa.
 
 ## Komentorivitoiminnot
 
-### Testit
+### Testien ajaminen
 
 > mvn test
 
