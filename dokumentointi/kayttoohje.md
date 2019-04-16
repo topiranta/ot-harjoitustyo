@@ -1,6 +1,6 @@
 # Käyttöohje
 
-*Käyttöohje ver 0.2, 9.4.2019*
+*Käyttöohje ver 0.3, 16.4.2019*
 
 ## Sovelluksen käyttäjälle
 
