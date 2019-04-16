@@ -1,6 +1,6 @@
 # Readme
 
-*Readme ver. 0.5.0 16.4.2019*
+*Readme ver. 0.6.0 16.4.2019*
 
 Sovelluksen tarkoituksen on mahdollistaa [Philips Hue -älyvalojen](https://developers.meethue.com) automaattinen 
 päivittäminen niin, että vuorokaudenajasta ja auringonlaskun ajankohdasta riippuen valojen väri ja kirkkaus muuttuvat 
@@ -21,3 +21,22 @@ Sovellus on kehitysvaiheensa alussa.
 [Työaikakirjanpito](https://github.com/topiranta/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
 [Ensimmäinen release](https://github.com/topiranta/ot-harjoitustyo/releases/tag/1.0)
+
+## Komentorivitoiminnot
+
+### Testit
+
+> mvn test
+
+### Testikattavuusraportti (target/site/jacoco/index.html)
+
+> mvn jacoco:report
+
+### Checkstyle (target/site/checkstyle.html)
+
+> mvn jxr:jxr checkstyle:checkstyle
+
+### .jar-tiedoston muodostaminen (/target)
+
+> mvn package
+
