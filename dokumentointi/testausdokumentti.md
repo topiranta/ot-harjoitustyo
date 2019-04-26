@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-*Testausdokumentti ver. 0.3, 16.4.2019*
+*Testausdokumentti ver. 0.4, 26.4.2019*
 
 ## Testit
 
@@ -8,7 +8,7 @@ Sovelluksen testien rakenne noudattaa sovelluksen pakkausrakennetta. Sovelluksen
 
 ## Testien ulkopuolisia riippuvuuksia
 
-Koska sovellus käyttää paljon yhteyksiä URL-osotteiden yli, on sovelluksessa testi, joka käyttää getJSON-metodia [JSONPlaceholder-testipalvelussa](https://jsonplaceholder.typicode.com/) olevan JSON-tiedon hakemiseen ja sen sisällön oikeellisuuden tarkistamiseen. Tämän vuoksi sanotun palvelun ollessa estynyt palvelemaan testejä tai palvelun muuttuessa ei yksi testi mene läpi.
+Koska sovellus käyttää paljon yhteyksiä URL-osotteiden yli, on sovelluksessa testejä, joka käyttävät [JSONPlaceholder-testipalvelua](https://jsonplaceholder.typicode.com/) JSON-tiedon hakemiseen ja sen sisällön oikeellisuuden tarkistamiseen. Tämän vuoksi sanotun palvelun ollessa estynyt palvelemaan testejä tai palvelun muuttuessa ei yksi tai useampi testi mene läpi.
 
 ## Maven, Jacoco, Checkstyle
 
