@@ -3,7 +3,19 @@ package topiranta.lightapplication.utils;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Luokka sisältää metodit, jotka suorittavat tiedostojen kirjoittamisen ja lukemisen pysyväistallennukseen
+ * 
+ */
+
 public class LocalFiles {
+    
+    /**
+     * Tiedoston kirjoittaminen
+     * @param filename kirjoitettavan tiedoston nimi. Metodi kirjoittaa aina uuden tiedoston.
+     * @param text  kirjoitettava sisältö
+     * @throws Exception    metodi heittää virheen, mikäli kirjoittaminen epäonnistuu
+     */
     
     public static void writeNewFile(String filename, String text) throws Exception {
         
@@ -12,6 +24,13 @@ public class LocalFiles {
         writer.close();
         
     }
+    
+    /**
+     * Tiedoston lukeminen
+     * @param filename  luettavan tiedoston nimi
+     * @return  tiedostosta luettu sisältö
+     * @throws Exception    metodi heittää virheen, mikäli lukeminen epäonnistuu
+     */
     
     public static String readFile(String filename) throws Exception {
         

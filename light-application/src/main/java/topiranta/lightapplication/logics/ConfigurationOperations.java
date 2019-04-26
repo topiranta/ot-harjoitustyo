@@ -3,7 +3,18 @@ package topiranta.lightapplication.logics;
 import topiranta.lightapplication.utils.LocalFiles;
 import topiranta.lightapplication.devices.*;
 
+/**
+ * Staattiset metodit, joilla kirjoitetaan ja luetaan konfigurointitietoa pysyväistallennuksesta
+ * 
+ */
+
 public class ConfigurationOperations {
+    
+    /**
+     * Metodi tallentaa valo-ohjaimen konfigurointitiedot pysyväistallennukseen
+     * @param bridge    valo-ohjain, jonka tiedot tallennetaan
+     * @throws Exception    metodi heittää virheen, mikäli tallennustiedoston luomisessa tai kirjoittamisessa tulee ongelmia
+     */
     
     public static void saveBridgeConfig(Bridge bridge) throws Exception {
         
@@ -17,6 +28,12 @@ public class ConfigurationOperations {
             
         }
     }
+    
+    /**
+     * Metodi lataa valo-ohjaimen konfigurointitiedot pysyväistallennuksesta
+     * @param bridge    valo-ohjain, jolle tiedot sovelluksessa annetaan
+     * @throws Exception    metodi heittää virheen, mikäli tiedoston lukeminen epäonnistuu
+     */
     
     public static void loadBridgeConfig(Bridge bridge) throws Exception {
         

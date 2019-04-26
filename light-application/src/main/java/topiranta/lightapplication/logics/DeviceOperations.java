@@ -9,8 +9,19 @@ import topiranta.lightapplication.devices.Bridge;
 import topiranta.lightapplication.devices.Lamp;
 import topiranta.lightapplication.utils.Connections;
 
+/**
+ * Staattiset metodit yleisten operaatioiden suorittamiseksi fyysisen valo-ohjaimen kanssa.
+ * 
+ */
 
 public class DeviceOperations {
+    
+    /**
+     * Kaikkien lamppujen hakeminen valo-ohjaimelta. Metodi pyytää ohjaimelta tiedon kaikista siihen kytketyistä valoista.
+     * @param bridge    ohjain, jonka lamput halutaan hakea
+     * @return  lista lamppuolioita, jotka on luotu sovellukseen fyysiseltä ohjaimelta saadun tiedon perusteella
+     * @throws Exception    metodi osaa heittää virheen, mikäli tiedon hakeminen epäonnistuu
+     */
 
     public static ArrayList<Lamp> getAllLamps(Bridge bridge) throws Exception {
         
@@ -27,6 +38,13 @@ public class DeviceOperations {
         
         return lamps;
     }
+    
+    /**
+     * Metodi lähettää tiedon uudesta sovelluksesta valo-ohjaimelle, ja palauttaa autentikointiavaimen, jota käytetään osana REST-rajapintakutsujen osoitetta
+     * @param bridgeIp  fyysisen valo-ohjaimen IP-osoite lähiverkossa
+     * @return  fyysiseltä valo-ohjaimelta saatu autentikointiavain
+     * @throws Exception    metodi osaa heittää virheen, mikäli autentikointi epäonnistuu esimerkiksi yhteysvirheen vuoksi
+     */
 
     public static String authenticateApplication(String bridgeIp) throws Exception {
         

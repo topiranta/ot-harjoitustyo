@@ -7,10 +7,20 @@ import java.net.*;
 import org.json.simple.*;
 import topiranta.lightapplication.devices.*;
 
+/**
+ * Luokassa on staattiset metodit, joilla otetaan varsinainen yhteys REST-rajapintoihin ja haetaan tai lähetetään niihin tietoa
+ * 
+ */
 
 public class Connections {
     
-
+    /**
+     * Metodi tekee POST-operaation sille parametrina annettuun URL-osoitteeseen myös parametrilla annettuna merkkijonolla
+     * @param url   URL, johon POST tehdään
+     * @param message   varsinainen POST-viesti
+     * @return  operaation seurauksena rajapinnasta saatu viesti
+     * @throws Exception    virhe annetaan, mikäli toiminto epäonnistuu
+     */
     
     public static JSONArray postMessage(URL url, String message) throws Exception {
         
@@ -33,6 +43,13 @@ public class Connections {
         }
     }
     
+    /**
+     * Metodi hakee GET-operaatiolla JSON-muotoista tietoa rajapinnasta
+     * @param url   URL-osoite, josta tieto haetaan
+     * @return  saatu JSON-muotoinen tieto
+     * @throws Exception    virhe heitetään, mikäli GET-operaatio epäonnistuu
+     */
+    
     public static JSONObject getJSON(URL url) throws Exception {
         
         HttpURLConnection connection = openNewConnection(url, "GET");
@@ -53,6 +70,13 @@ public class Connections {
         }
         
     }
+    
+    /**
+     * JSON-viestin lähettäminen haluttuun URL-osoitteeseen
+     * @param url   URL, johon viesti lähetetään
+     * @param message   lähetettävä JSON-viesti
+     * @throws Exception    metodi heittää virheen, mikäli operaatio epäonnistuu
+     */
     
     public static void putJSON(URL url, String message) throws Exception {
         
@@ -75,7 +99,7 @@ public class Connections {
         
     }
     
-    public static HttpURLConnection openNewConnection(URL url, String requestMethod) throws Exception {
+    private static HttpURLConnection openNewConnection(URL url, String requestMethod) throws Exception {
         
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         
@@ -91,7 +115,7 @@ public class Connections {
    
     }
     
-    public static void writeMessage(HttpURLConnection connection, String message) throws Exception {
+    private static void writeMessage(HttpURLConnection connection, String message) throws Exception {
         
         OutputStreamWriter messageWriter = new OutputStreamWriter(connection.getOutputStream());
         messageWriter.write(message);
@@ -99,7 +123,7 @@ public class Connections {
         
     }
     
-    public static String getResponse(HttpURLConnection connection) throws Exception {
+    private static String getResponse(HttpURLConnection connection) throws Exception {
         
         StringBuilder sBuilder = new StringBuilder();
         Scanner reader = new Scanner(connection.getInputStream());

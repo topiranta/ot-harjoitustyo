@@ -3,6 +3,10 @@ package topiranta.lightapplication.devices;
 
 import java.util.*;
 
+/**
+ * Luokka kuvaa Philips Hue -valo-ohjainta sovelluksessa
+ * 
+ */
 
 public class Bridge {
     
@@ -10,12 +14,25 @@ public class Bridge {
     private String name;
     private String appId;
     
+    /**
+     * Lyhyt konstruktori, joka mahdollistaa valo-ohjainolion perustamisen sovellukseen ilman, että autentikointiavaimen hakeminen fyysiseltä laitteelta on onnistunut
+     * @param ip    ohjaimen ip-osoite sisäverkossa
+     * @param name  ohjaimen nimi sovelluksessa 
+     */
+    
     public Bridge(String ip, String name) {
         
         this.ip = ip;
         this.name = name;
         
     }
+    
+    /**
+     * Pitkä konstruktori, jolla myös onnistuneesti saatu autentikointiavain voidaan tallentaa olion tietoihin
+     * @param ip    ohjaimen ip-osoite sisäverkossa
+     * @param name  ohjaimen nimi sovelluksessa
+     * @param appId fyysiseltä laitteelta saatu autentikointiavain
+     */
     
     public Bridge(String ip, String name, String appId) {
         

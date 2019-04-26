@@ -4,7 +4,6 @@ package topiranta.lightapplication;
 
 import topiranta.lightapplication.logics.Application;
 import topiranta.lightapplication.ui.TextUi;
-import topiranta.lightapplication.devtests.*;
 import java.util.*;
 
 
