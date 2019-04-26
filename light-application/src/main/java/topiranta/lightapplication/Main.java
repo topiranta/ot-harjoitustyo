@@ -7,6 +7,9 @@ import topiranta.lightapplication.ui.TextUi;
 import java.util.*;
 
 
+
+
+
 public class Main {
     
     public static void main(String[] args) {
@@ -16,6 +19,9 @@ public class Main {
         TextUi textui = new TextUi(application, new Scanner(System.in));
         
         textui.start();
+        
+        
+
         
 
 

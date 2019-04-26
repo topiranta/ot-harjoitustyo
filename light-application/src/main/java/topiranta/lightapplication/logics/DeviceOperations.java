@@ -55,7 +55,7 @@ public class DeviceOperations {
         
         try {
         
-            response = Connections.postMessage(postURL, message);
+            response = (JSONArray) Connections.postJSON(postURL, message);
         
         } catch (Exception e) {
             

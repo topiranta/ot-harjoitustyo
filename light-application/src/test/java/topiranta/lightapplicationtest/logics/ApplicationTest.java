@@ -98,6 +98,8 @@ public class ApplicationTest {
         application.getAllLampsFromBridge();
         assertEquals("All lamps turned off", application.turnOffAllLamps());
     }
+    
+    
 
     
 }

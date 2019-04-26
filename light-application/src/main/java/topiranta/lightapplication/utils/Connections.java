@@ -22,13 +22,13 @@ public class Connections {
      * @throws Exception    virhe annetaan, mikäli toiminto epäonnistuu
      */
     
-    public static JSONArray postMessage(URL url, String message) throws Exception {
+    public static Object postJSON(URL url, String message) throws Exception {
         
         HttpURLConnection connection = openNewConnection(url, "POST");
         writeMessage(connection, message);
         int responseCode = connection.getResponseCode();
         
-        if (responseCode != 200) {
+        if (!(responseCode == 200 || responseCode == 201)) {
             
             connection.disconnect();
             throw new Exception("" + responseCode);
@@ -39,7 +39,7 @@ public class Connections {
             connection.disconnect();
             Object receivedMessage = JSONValue.parse(response);
             
-            return (JSONArray) receivedMessage;  
+            return receivedMessage;  
         }
     }
     

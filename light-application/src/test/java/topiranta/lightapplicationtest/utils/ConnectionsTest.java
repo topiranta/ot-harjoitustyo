@@ -49,6 +49,67 @@ public class ConnectionsTest {
         assertEquals("delectus aut autem", receivedJSON.get("title"));
         
     }
+    
+    @Test
+    public void postJSONReturnsCorrectMessage() {
+        
+        JSONObject receivedJSON = new JSONObject();
+        
+        try {
+            
+            receivedJSON = (JSONObject) Connections.postJSON((new URL("https://jsonplaceholder.typicode.com/posts")), "");
+            
+        } catch (Exception e) {
+            
+
+        }
+        
+        
+        assertEquals((long) 101, receivedJSON.get("id"));
+        
+    }
+    
+    @Test
+    public void postJSONThrowsExceptionWithFaultyURL() {
+        
+        String message = "";
+        
+        try {
+            
+            Connections.postJSON((new URL("https://topiranta.com/posts")), "{\"device-type\":\"test\"}");
+            
+        } catch (Exception e) {
+            
+            message = e.getMessage();
+            
+        }
+        
+        assertEquals("404", message);
+        
+    }
+    
+    @Test
+    public void putJSONSucceeds() {
+        
+        int result = 1;
+        
+        try {
+            
+            Connections.putJSON((new URL("https://jsonplaceholder.typicode.com/posts/1")), "{\"on\":\"false\"}");
+            
+            result = 2;
+            
+        } catch (Exception e) {
+            
+            result = 0;
+            
+        }
+        
+        assertEquals(2, result);
+    }
+    
+    
+    
 
     
 }
