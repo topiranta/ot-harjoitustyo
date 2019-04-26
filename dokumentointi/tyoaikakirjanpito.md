@@ -6,4 +6,5 @@
 | 9.4. | 8 | Uudet featuret (valojen hakeminen ja sammuttaminen), Utils-luokan staattisten metodien siistiminen ja refaktorointi, Hue-dokumentaation tutkiminen ja oman dokumentaation päivittäminen |
 | 15.4. | 9 | Ohjaimen konfiguraatioiden pysyväistallennus, testien suunnittelu ja kirjoittaminen, metodien ekstraktointi ja pakkauksien uudelleenjärjestely, oman työjonon organisointi |
 | 16.4. | 1,5 | Dokumentaation päivitys |
-|Yht. | 26,5 | |
+| 26.4. | 4 | Testien kirjoittelua, pom-fiksejä, dokumentaation päivittämistä |
+|Yht. | 30,5 | |
