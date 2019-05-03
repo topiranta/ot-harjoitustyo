@@ -50,7 +50,7 @@ public class Connections {
      * @throws Exception    virhe heitetään, mikäli GET-operaatio epäonnistuu
      */
     
-    public static JSONObject getJSON(URL url) throws Exception {
+    public static Object getJSON(URL url) throws Exception {
         
         HttpURLConnection connection = openNewConnection(url, "GET");
         int responseCode = connection.getResponseCode();
@@ -66,7 +66,7 @@ public class Connections {
             connection.disconnect();
             Object receivedMessage = JSONValue.parse(response);
             
-            return (JSONObject) receivedMessage;
+            return receivedMessage;
         }
         
     }

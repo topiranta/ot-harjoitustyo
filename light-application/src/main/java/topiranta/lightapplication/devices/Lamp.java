@@ -13,6 +13,7 @@ public class Lamp {
     
     private int id;
     private Bridge bridge;
+    private String name;
     
     /**
      * Konstruktori
@@ -25,6 +26,13 @@ public class Lamp {
         this.id = id;
         this.bridge = bridge;
         
+    }
+    
+    public Lamp(int id, Bridge bridge, String name) {
+        
+        this.id = id;
+        this.bridge = bridge;
+        this.name = name;
     }
     
     /**
@@ -48,6 +56,18 @@ public class Lamp {
     public void turnOff() throws Exception {
         
         Connections.putJSON(this.getPutUrl(), "{\"on\": false}");
+        
+    }
+    
+    public String getName() {
+        
+        return this.name;
+        
+    }
+    
+    public void setValues(int ct, int bri) throws Exception {
+        
+        Connections.putJSON(this.getPutUrl(), "{\"ct\":" + ct + ", \"bri:\"" + bri + "}");
         
     }
     

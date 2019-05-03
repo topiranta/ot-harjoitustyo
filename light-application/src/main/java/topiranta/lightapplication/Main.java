@@ -10,6 +10,10 @@ import java.util.*;
 
 
 
+
+import topiranta.lightapplication.devtests.*;
+
+
 public class Main {
     
     public static void main(String[] args) {
@@ -20,7 +24,7 @@ public class Main {
         
         textui.start();
         
-        
+        //BasicTests.printCurrentValues();
 
         
 

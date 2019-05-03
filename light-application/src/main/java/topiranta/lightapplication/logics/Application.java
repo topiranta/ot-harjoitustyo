@@ -8,7 +8,7 @@ import java.util.*;
 public class Application {
     
     private Bridge bridge;
-    private ArrayList<Lamp> lamps;
+    private ArrayList<Lamp> allLamps;
     
     public String setBridge(String ip, String name) {
         
@@ -46,7 +46,7 @@ public class Application {
             
                 try {
 
-                    this.lamps = DeviceOperations.getAllLamps(this.bridge);
+                    this.allLamps = DeviceOperations.getAllLamps(this.bridge);
 
                 } catch (Exception e) {
 
@@ -56,7 +56,7 @@ public class Application {
             
             } else {
                 
-                this.lamps = UserTestMode.getLampTestSet(this.bridge);
+                this.allLamps = DefaultAndTestValues.getLampTestSet(this.bridge);
                 
             }
             
@@ -70,11 +70,11 @@ public class Application {
     
     public String turnOffAllLamps() {
         
-        if (this.lamps != null && this.lamps.size() > 0) {
+        if (this.allLamps != null && this.allLamps.size() > 0) {
             
             if (!this.bridge.getIp().equals("0.0.0.0")) {
             
-                for (Lamp lamp : this.lamps) {
+                for (Lamp lamp : this.allLamps) {
 
                     try {
 
@@ -120,7 +120,23 @@ public class Application {
     
     public ArrayList<Lamp> getAllLamps() {
         
-        return this.lamps;
+        return this.allLamps;
+        
+    }
+    
+    public ArrayList<String> getAllLampNames() {
+        
+        ArrayList<String> names = new ArrayList<>();
+        
+        for (Lamp lamp : this.getAllLamps()) {
+            
+            names.add(lamp.getName());
+            
+        }
+        
+        return names;
+        
+
         
     }
     

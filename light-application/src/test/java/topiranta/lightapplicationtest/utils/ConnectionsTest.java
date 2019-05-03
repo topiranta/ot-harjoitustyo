@@ -39,7 +39,7 @@ public class ConnectionsTest {
         
         try {
         
-            receivedJSON = Connections.getJSON(new URL("https://jsonplaceholder.typicode.com/todos/1"));
+            receivedJSON = (JSONObject) Connections.getJSON(new URL("https://jsonplaceholder.typicode.com/todos/1"));
         
         } catch (Exception e) {
             

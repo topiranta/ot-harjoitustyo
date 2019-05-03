@@ -3,12 +3,13 @@ package topiranta.lightapplication.logics;
 import java.util.*;
 import topiranta.lightapplication.devices.*;
 
+
 /**
  * Luokassa on metodeja, jotka mahdollistavat sovelluksen käyttämisen testimoodissa, jos fyysistä valo-ohjainta ei ole saatavilla
  *
  */
 
-public class UserTestMode {
+public class DefaultAndTestValues {
     
     /**
      * Metodi palauttaa listan ohjelmallisesti generoituja lamppuolioita
@@ -27,6 +28,18 @@ public class UserTestMode {
         }
         
         return lampList;
+        
+    }
+    
+    public static String getHelsinkiLat() {
+        
+        return "60.1706664";
+        
+    }
+    
+    public static String getHelsinkiLng() {
+        
+        return "24.9416871";
         
     }
     

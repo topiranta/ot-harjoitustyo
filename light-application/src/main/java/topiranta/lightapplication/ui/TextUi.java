@@ -111,6 +111,14 @@ public class TextUi {
                 
                 System.out.println(this.application.loadBridgeConfiguration());
                 
+            } else if (input.equals("10")) {
+                
+                for (String string : this.application.getAllLampNames()) {
+                    
+                    System.out.println(string);
+                    
+                }
+            
             } else if (input.equals("99")) {
                 
                 System.out.println("Oh you! You found a secret testing command. No testing was, however, conducted.");

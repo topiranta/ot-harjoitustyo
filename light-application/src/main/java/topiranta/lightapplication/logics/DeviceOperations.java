@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import topiranta.lightapplication.devices.Bridge;
 import topiranta.lightapplication.devices.Lamp;
 import topiranta.lightapplication.utils.Connections;
@@ -27,11 +28,17 @@ public class DeviceOperations {
         
         ArrayList<Lamp> lamps = new ArrayList<>();
         URL getURL = new URL("http://" + bridge.getIp() + "/api/" + bridge.getAppId() + "/lights");
-        JSONObject response = Connections.getJSON(getURL);
+        JSONObject response = (JSONObject) Connections.getJSON(getURL);
         
         for (Object object : response.keySet()) {
             
-            Lamp lamp = new Lamp(Integer.valueOf(object.toString()), bridge);
+            int id = Integer.valueOf(object.toString());
+            
+            JSONObject object2 = (JSONObject) response.get("" + id);
+            
+            String name = object2.get("name").toString();
+            
+            Lamp lamp = new Lamp(id, bridge, name);
             lamps.add(lamp);
             
         }

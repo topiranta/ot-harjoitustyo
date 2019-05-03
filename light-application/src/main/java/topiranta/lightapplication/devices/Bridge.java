@@ -13,6 +13,8 @@ public class Bridge {
     private String ip;
     private String name;
     private String appId;
+    private String lat;
+    private String lng;
     
     /**
      * Lyhyt konstruktori, joka mahdollistaa valo-ohjainolion perustamisen sovellukseen ilman, että autentikointiavaimen hakeminen fyysiseltä laitteelta on onnistunut
@@ -60,6 +62,18 @@ public class Bridge {
         
     }
     
+    public void setLat(String lat) {
+        
+        this.lat = lat;
+        
+    }
+    
+    public void setLng(String lng) {
+        
+        this.lng = lng;
+        
+    }
+    
     public String getIp() {
         
         return this.ip;
@@ -75,6 +89,18 @@ public class Bridge {
     public String getAppId() {
         
         return this.appId;
+        
+    }
+    
+    public String getLat() {
+        
+        return this.lat;
+        
+    }
+    
+    public String getLng() {
+        
+        return this.lng;
         
     }
     
