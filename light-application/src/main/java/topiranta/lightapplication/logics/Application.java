@@ -9,6 +9,8 @@ public class Application {
     
     private Bridge bridge;
     private ArrayList<Lamp> allLamps;
+    private ArrayList<Lamp> lampsToUpdate = new ArrayList<>();
+    private LightCalculator lightCalculator;
     
     public String setBridge(String ip, String name) {
         
@@ -35,6 +37,23 @@ public class Application {
         }
         
         return "Authentication successful";
+        
+    }
+    
+    public String setLocation(String lat, String lng) throws Exception {
+        
+        if (this.bridge == null) {
+            
+            return "Bridge must be configured before setting the location";
+            
+        }
+        
+        this.bridge.setLat(lat);
+        this.bridge.setLng(lng);
+        
+        this.lightCalculator = new LightCalculator(this.bridge);
+        
+        return "Location set successfully";
         
     }
     
@@ -178,6 +197,16 @@ public class Application {
         } catch (Exception e) {
             
             return "Failed to load configurations: " + e;
+            
+        }
+        
+    }
+    
+    public void addAllLampsToBeUpdatedAutomatically() {
+        
+        for (Lamp lamp : allLamps) {
+            
+            this.lampsToUpdate.add(lamp);
             
         }
         

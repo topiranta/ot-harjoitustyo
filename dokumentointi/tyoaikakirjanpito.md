@@ -7,5 +7,5 @@
 | 15.4. | 9 | Ohjaimen konfiguraatioiden pysyväistallennus, testien suunnittelu ja kirjoittaminen, metodien ekstraktointi ja pakkauksien uudelleenjärjestely, oman työjonon organisointi |
 | 16.4. | 1,5 | Dokumentaation päivitys |
 | 26.4. | 4 | Testien kirjoittelua, pom-fiksejä, dokumentaation päivittämistä, javadocia |
-| 3.5. | 8 | Auringonlaskuajan nouto rajapinnasta, LocalDateTime-operaatiot, värilaskenta |
-|Yht. | 38,5 | |
+| 3.5. | 9 | Auringonlaskuajan nouto rajapinnasta, LocalDateTime-operaatiot, värilaskenta |
+|Yht. | 39,5 | |

@@ -23,7 +23,7 @@ public class DefaultAndTestValues {
         
         for (int i = 1; i < 5; i++) {
             
-            lampList.add(new Lamp(i, bridge));
+            lampList.add(new Lamp(i, bridge, "lamp " + 1));
             
         }
         
