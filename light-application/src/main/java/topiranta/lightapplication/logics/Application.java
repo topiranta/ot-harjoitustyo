@@ -9,7 +9,7 @@ public class Application {
     
     private Bridge bridge;
     private ArrayList<Lamp> allLamps;
-    private ArrayList<Lamp> lampsToUpdate = new ArrayList<>();
+    private ArrayList<Lamp> userListOfLampsToUpdate = new ArrayList<>();
     private LightCalculator lightCalculator;
     private int[] previouslyUpdatedValues;
     
@@ -220,7 +220,7 @@ public class Application {
         
         for (Lamp lamp : allLamps) {
             
-            this.lampsToUpdate.add(lamp);
+            this.userListOfLampsToUpdate.add(lamp);
             
         }
         
@@ -232,11 +232,11 @@ public class Application {
         
         int index = -1;
         
-        for (Lamp lamp : lampsToUpdate) {
+        for (Lamp lamp : userListOfLampsToUpdate) {
             
             if (lamp.getName().equals(lampName)) {
                 
-                index = lampsToUpdate.indexOf(lamp);
+                index = userListOfLampsToUpdate.indexOf(lamp);
                 
             }
             
@@ -244,7 +244,7 @@ public class Application {
         
         if (index != -1) {
             
-            lampsToUpdate.remove(index);
+            userListOfLampsToUpdate.remove(index);
             
             return lampName + " successfully removed from automatically updated lamps";
             
@@ -256,7 +256,7 @@ public class Application {
     
     public String removeAllLampsFromBeingUpdatedAutomatically() {
         
-        this.lampsToUpdate.clear();
+        this.userListOfLampsToUpdate.clear();
         
         return  "All lamps removed from being updated automatically";
         
@@ -268,7 +268,7 @@ public class Application {
             
             try {
             
-                this.lampsToUpdate = DeviceOperations.lampsStillToBeUpdated(previouslyUpdatedValues, lampsToUpdate, bridge);
+                this.userListOfLampsToUpdate = DeviceOperations.lampsToBeUpdated(previouslyUpdatedValues, userListOfLampsToUpdate, bridge);
             
             } catch (Exception e) {
                 
@@ -277,7 +277,7 @@ public class Application {
             }
         }
         
-        if (this.lampsToUpdate == null || this.lampsToUpdate.size() == 0) {
+        if (this.userListOfLampsToUpdate == null || this.userListOfLampsToUpdate.size() == 0) {
             
             return "No lamps to be updated";
         }
@@ -294,7 +294,7 @@ public class Application {
             return "Error while calculating color and brightness values: " + e.getMessage();
         }
         
-        for (Lamp lamp : this.lampsToUpdate) {
+        for (Lamp lamp : this.userListOfLampsToUpdate) {
             
             try {
                 

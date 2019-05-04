@@ -1,6 +1,7 @@
 package topiranta.lightapplication.devices;
 
 import java.net.*;
+import java.util.Objects;
 import topiranta.lightapplication.utils.Connections;
 import org.json.simple.*;
 
@@ -106,5 +107,54 @@ public class Lamp {
         Connections.putJSON(this.getPutUrl(), "{\"ct\":" + ct + ", \"bri\":" + bri + ", \"on\":true}");
         
     }
+
+    @Override
+    public int hashCode() {
+        
+        int hash = 3;
+        hash = 29 * hash + this.id;
+        hash = 29 * hash + Objects.hashCode(this.name);
+        
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            
+            return true;
+            
+        }
+        
+        if (obj == null) {
+            
+            return false;
+            
+        }
+        if (getClass() != obj.getClass()) {
+            
+            return false;
+            
+        }
+        
+        final Lamp other = (Lamp) obj;
+        
+        if (this.id != other.id) {
+            
+            return false;
+            
+        }
+        
+        if (!Objects.equals(this.name, other.name)) {
+            
+            return false;
+            
+        }
+        
+        return true;
+    }
+    
+    
     
 }

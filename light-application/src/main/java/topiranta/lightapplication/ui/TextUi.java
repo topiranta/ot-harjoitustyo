@@ -2,6 +2,8 @@ package topiranta.lightapplication.ui;
 
 import java.util.*;
 import java.io.*;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import topiranta.lightapplication.logics.Application;
 import topiranta.lightapplication.logics.DefaultAndTestValues;
 
@@ -171,6 +173,42 @@ public class TextUi {
         }
         
         System.out.println(this.application.setLocation(lat, lng));
+    }
+    
+    public void configureAutomaticUpdate() {
+        
+        LocalDateTime stop;
+        
+        System.out.println("Insert time for automatic update to stop, for example 18:30 (inserting no time will run the program indefinitely and thus the program must be stopped by the OS)");
+        System.out.print("> ");
+        
+        String time = reader.nextLine();
+        
+        if (!time.equals("")) {
+            
+            stop = LocalDateTime.parse(LocalDate.now().toString() + "T" + time + "00");
+            
+        } else {
+            
+            stop = LocalDateTime.parse("2050-01-01T00:00:00");
+        }
+        
+    }
+    
+    public void startAutomaticUpdate(LocalDateTime stop) {
+        
+        LocalDateTime lastUpdate = LocalDateTime.now();
+        
+        while (LocalDateTime.now().compareTo(stop) < 0) {
+            
+            if (LocalDateTime.now().until(lastUpdate, ChronoUnit.SECONDS) < -60) {
+                
+                System.out.println(LocalDateTime.now().toString() + ": " + this.application.updateLamps());
+                
+            }
+            
+        }
+        
     }
     
     public void printCommands() {

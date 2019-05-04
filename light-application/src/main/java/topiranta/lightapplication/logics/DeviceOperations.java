@@ -83,44 +83,47 @@ public class DeviceOperations {
         return success.get("username").toString();
     }
     
-    public static ArrayList<Lamp> lampsStillToBeUpdated(int[] previousValues, ArrayList<Lamp> lampsCurrentlyBeingUpdated, Bridge bridge) throws Exception {
+    public static ArrayList<Lamp> lampsToBeUpdated(int[] previousValues, ArrayList<Lamp> userListOfLampsToUpdate, Bridge bridge) throws Exception {
         
         ArrayList<Lamp> toReturn = new ArrayList<>();
-        URL getURL = new URL("http://" + bridge.getIp() + "/api/" + bridge.getAppId() + "/lights");
+        ArrayList<Lamp> allLamps = getAllLamps(bridge);
         
+        URL getURL = new URL("http://" + bridge.getIp() + "/api/" + bridge.getAppId() + "/lights");
         JSONObject response = (JSONObject) Connections.getJSON(getURL);
         
         
-        for (Lamp lamp : lampsCurrentlyBeingUpdated) {
+        for (Lamp lamp : allLamps) {
             
+            if (userListOfLampsToUpdate.contains(lamp)) {
             
-            JSONObject lampInformation = (JSONObject) response.get("" + lamp.getId());
-            String lampType = lampInformation.get("type").toString();
-            JSONObject state = (JSONObject) lampInformation.get("state");
+                JSONObject lampInformation = (JSONObject) response.get("" + lamp.getId());
+                String lampType = lampInformation.get("type").toString();
+                JSONObject state = (JSONObject) lampInformation.get("state");
+
+
+                int[] values = new int[2];
+
+                if (!lampType.equals("Dimmable light")) {
+
+                    values[0] = Integer.valueOf(state.get("ct").toString());
+
+                } else {
+
+                    values[0] = previousValues[0];
+
+                }
+
+                values[1] = Integer.valueOf(state.get("bri").toString());
+                String on = state.get("on").toString();
+                String reachable = state.get("reachable").toString();
+
+
+                if (on.equals("true") && reachable.equals("true") && (values[0] == previousValues[0] || values[0] == 211) && (values[1] == previousValues[1] || values[1] == 211)) {
+
+                    toReturn.add(lamp);
+
+                }
             
-            
-            int[] values = new int[2];
-            
-            if (!lampType.equals("Dimmable light")) {
-            
-                values[0] = Integer.valueOf(state.get("ct").toString());
-                
-            } else {
-                
-                values[0] = previousValues[0];
-                
-            }
-            
-            values[1] = Integer.valueOf(state.get("bri").toString());
-            String on = state.get("on").toString();
-            
-            
-            if (on.equals("true") && values[0] == previousValues[0] && values[1] == previousValues[1]) {
-                
-                toReturn.add(lamp);
-                
-                System.out.println("Added lamp " + lamp.getName());
-                
             }
             
             
