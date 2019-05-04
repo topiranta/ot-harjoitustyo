@@ -4,6 +4,7 @@ package topiranta.lightapplication.logics;
 import topiranta.lightapplication.devices.*;
 import topiranta.lightapplication.utils.Connections;
 import java.util.*;
+import java.time.*;
 
 public class Application {
     

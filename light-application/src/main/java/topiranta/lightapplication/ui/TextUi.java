@@ -101,6 +101,10 @@ public class TextUi {
                 
                 System.out.println(this.application.updateLamps());
             
+            } else if (input.equals("13")) {
+                
+                configureAutomaticUpdate();
+            
             } else if (input.equals("99")) {
                 
                 System.out.println("Oh you! You found a secret testing command. No testing was, however, conducted.");
@@ -192,6 +196,8 @@ public class TextUi {
             
             stop = LocalDateTime.parse("2050-01-01T00:00:00");
         }
+        
+        startAutomaticUpdate(stop);
         
     }
     
