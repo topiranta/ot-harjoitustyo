@@ -203,13 +203,14 @@ public class TextUi {
     
     public void startAutomaticUpdate(LocalDateTime stop) {
         
-        LocalDateTime lastUpdate = LocalDateTime.now();
+        LocalDateTime lastUpdate = LocalDateTime.now().minus(60, ChronoUnit.SECONDS);
         
         while (LocalDateTime.now().compareTo(stop) < 0) {
             
             if (LocalDateTime.now().until(lastUpdate, ChronoUnit.SECONDS) < -60) {
                 
                 System.out.println(LocalDateTime.now().toString() + ": " + this.application.updateLamps());
+                lastUpdate = LocalDateTime.now();
                 
             }
             
