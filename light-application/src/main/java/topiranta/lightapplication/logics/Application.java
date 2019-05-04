@@ -11,6 +11,7 @@ public class Application {
     private ArrayList<Lamp> allLamps;
     private ArrayList<Lamp> lampsToUpdate = new ArrayList<>();
     private LightCalculator lightCalculator;
+    private int[] previouslyUpdatedValues;
     
     public String setBridge(String ip, String name) {
         
@@ -40,7 +41,7 @@ public class Application {
         
     }
     
-    public String setLocation(String lat, String lng) throws Exception {
+    public String setLocation(String lat, String lng) {
         
         if (this.bridge == null) {
             
@@ -51,7 +52,15 @@ public class Application {
         this.bridge.setLat(lat);
         this.bridge.setLng(lng);
         
-        this.lightCalculator = new LightCalculator(this.bridge);
+        try {
+        
+            this.lightCalculator = new LightCalculator(this.bridge);
+        
+        } catch (Exception e) {
+            
+            return "Error: " + e.getMessage();
+            
+        }
         
         return "Location set successfully";
         
@@ -192,7 +201,6 @@ public class Application {
         
             ConfigurationOperations.loadBridgeConfig(this.bridge);
             
-            return "Successfully loaded bridge configurations";
         
         } catch (Exception e) {
             
@@ -200,9 +208,15 @@ public class Application {
             
         }
         
+        this.setLocation(bridge.getLat(), bridge.getLng());
+        
+        return "Successfully loaded bridge configurations";
+        
     }
     
-    public void addAllLampsToBeUpdatedAutomatically() {
+    public String addAllLampsToBeUpdatedAutomatically() {
+        
+        this.previouslyUpdatedValues = null;
         
         for (Lamp lamp : allLamps) {
             
@@ -210,7 +224,95 @@ public class Application {
             
         }
         
+        return "All lamps added to the list of automatically updated lamps";
+        
     }
+    
+    public String removeLampFromBeingUpdatedAutomatically(String lampName) {
+        
+        int index = -1;
+        
+        for (Lamp lamp : lampsToUpdate) {
+            
+            if (lamp.getName().equals(lampName)) {
+                
+                index = lampsToUpdate.indexOf(lamp);
+                
+            }
+            
+        }
+        
+        if (index != -1) {
+            
+            lampsToUpdate.remove(index);
+            
+            return lampName + " successfully removed from automatically updated lamps";
+            
+        }
+        
+        return "No lamp removed: lamp name not found";
+        
+    }
+    
+    public String removeAllLampsFromBeingUpdatedAutomatically() {
+        
+        this.lampsToUpdate.clear();
+        
+        return  "All lamps removed from being updated automatically";
+        
+    }
+    
+    public String updateLamps() {
+        
+        if (this.previouslyUpdatedValues != null) {
+            
+            try {
+            
+                this.lampsToUpdate = DeviceOperations.lampsStillToBeUpdated(previouslyUpdatedValues, lampsToUpdate, bridge);
+            
+            } catch (Exception e) {
+                
+                return "Error: " + e.getMessage();
+                
+            }
+        }
+        
+        if (this.lampsToUpdate == null || this.lampsToUpdate.size() == 0) {
+            
+            return "No lamps to be updated";
+        }
+        
+        int[] valuesToUpdate = new int[2];
+        
+        try {
+            
+            valuesToUpdate = this.lightCalculator.getLightValues();
+            
+        
+        } catch (Exception e) {
+            
+            return "Error while calculating color and brightness values: " + e.getMessage();
+        }
+        
+        for (Lamp lamp : this.lampsToUpdate) {
+            
+            try {
+                
+                lamp.setValues(valuesToUpdate[0], valuesToUpdate[1]);
+                
+            } catch (Exception e) {
+                
+                return "Error while updating lamp values: " + e.getMessage();
+                
+            }
+            
+        }
+        
+        this.previouslyUpdatedValues = valuesToUpdate;
+        
+        return "Lamps successfully updated";
+    }
+    
     
     
     @Override

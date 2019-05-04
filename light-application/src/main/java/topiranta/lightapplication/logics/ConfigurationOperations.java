@@ -20,7 +20,7 @@ public class ConfigurationOperations {
         
         try {
         
-            LocalFiles.writeNewFile("config.txt", bridge.getIp() + ", " + bridge.getName() + ", " + bridge.getAppId());
+            LocalFiles.writeNewFile("config.txt", bridge.getIp() + ", " + bridge.getName() + ", " + bridge.getAppId() + ", " + bridge.getLat() + ", " + bridge.getLng());
         
         } catch (Exception e) {
             
@@ -43,6 +43,8 @@ public class ConfigurationOperations {
             bridge.setIp(config[0]);
             bridge.setName(config[1]);
             bridge.setAppId(config[2]);
+            bridge.setLat(config[3]);
+            bridge.setLng(config[4]);
             
         } catch (Exception e) {
             

@@ -3,6 +3,7 @@ package topiranta.lightapplication.ui;
 import java.util.*;
 import java.io.*;
 import topiranta.lightapplication.logics.Application;
+import topiranta.lightapplication.logics.DefaultAndTestValues;
 
 public class TextUi {
     
@@ -35,38 +36,9 @@ public class TextUi {
                 
             } else if (input.equals("1")) {
                 
-                System.out.println("What is the IP address of your bridge? (insert 0.0.0.0 to use application in user test mode)");
-                System.out.print("> ");
-                String ip = reader.nextLine();
-                
-                System.out.println("What do you want to call your bridge?");
-                System.out.print("> ");
-                String name = reader.nextLine();
-                
-                System.out.println("Please press you bridge connection button before proceeding. Insert \"c\" when you are ready to continue or \"x\" to cancel.");
-                
-                while(true) {
+                this.configureBridge();
+                this.setCoordinates();
                     
-                    System.out.print("> ");
-                    
-                    String command = reader.nextLine();
-                    
-                    if (command.equals("x")) {
-                        
-                        break;
-                        
-                    } else if (command.equals("c")) {
-                        
-                        System.out.println(this.application.setBridge(ip, name));
-                        
-                    }
-                    
-                    System.out.println("");
-                    
-                    break;
-                }
-                
-                
             } else if (input.equals("2")) {
                 
                 System.out.print("Insert new name: ");
@@ -119,6 +91,14 @@ public class TextUi {
                     
                 }
             
+            } else if (input.equals("11")) {
+                
+                System.out.println(this.application.addAllLampsToBeUpdatedAutomatically());
+            
+            } else if (input.equals("12")) {
+                
+                System.out.println(this.application.updateLamps());
+            
             } else if (input.equals("99")) {
                 
                 System.out.println("Oh you! You found a secret testing command. No testing was, however, conducted.");
@@ -133,6 +113,64 @@ public class TextUi {
             
         }
         
+    }
+    
+    public void configureBridge() {
+        
+        System.out.println("What is the IP address of your bridge? (insert 0.0.0.0 to use application in user test mode)");
+                System.out.print("> ");
+                String ip = reader.nextLine();
+                
+                System.out.println("What do you want to call your bridge?");
+                System.out.print("> ");
+                String name = reader.nextLine();
+                
+                System.out.println("Please press you bridge connection button before proceeding. Insert \"c\" when you are ready to continue or \"x\" to cancel.");
+                
+                while(true) {
+                    
+                    System.out.print("> ");
+                    
+                    String command = reader.nextLine();
+                    
+                    if (command.equals("x")) {
+                        
+                        break;
+                        
+                    } else if (command.equals("c")) {
+                        
+                        System.out.println(this.application.setBridge(ip, name));
+                        
+                    }
+                    
+                    System.out.println("");
+                    
+                    break;
+                }
+        
+    }
+    
+    public void setCoordinates() {
+        
+        String lat;
+        String lng;
+        System.out.print("Insert bridge latitude coordinate, for example 60.1718665 (inserting empty latitude sets Helsinki coordinates for the bridge): ");
+        String input = reader.nextLine();
+        
+        if (input.equals("")) {
+            
+            lat = DefaultAndTestValues.getHelsinkiLat();
+            lng = DefaultAndTestValues.getHelsinkiLng();
+            
+        } else {
+            
+            lat = input;
+            System.out.print("Insert bridge longitude coordinate: ");
+            lng = reader.nextLine();
+            
+        }
+        
+        System.out.println(this.application.setLocation(lat, lng));
     }
     
     public void printCommands() {

@@ -47,7 +47,8 @@ public class DeviceOperations {
     }
     
     /**
-     * Metodi lähettää tiedon uudesta sovelluksesta valo-ohjaimelle, ja palauttaa autentikointiavaimen, jota käytetään osana REST-rajapintakutsujen osoitetta
+     * Metodi lähettää tiedon uudesta sovelluksesta valo-ohjaimelle, ja palauttaa autentikointiavaimen, 
+     * jota käytetään osana REST-rajapintakutsujen osoitetta
      * @param bridgeIp  fyysisen valo-ohjaimen IP-osoite lähiverkossa
      * @return  fyysiseltä valo-ohjaimelta saatu autentikointiavain
      * @throws Exception    metodi osaa heittää virheen, mikäli autentikointi epäonnistuu esimerkiksi yhteysvirheen vuoksi
@@ -80,6 +81,53 @@ public class DeviceOperations {
         }
         
         return success.get("username").toString();
+    }
+    
+    public static ArrayList<Lamp> lampsStillToBeUpdated(int[] previousValues, ArrayList<Lamp> lampsCurrentlyBeingUpdated, Bridge bridge) throws Exception {
+        
+        ArrayList<Lamp> toReturn = new ArrayList<>();
+        URL getURL = new URL("http://" + bridge.getIp() + "/api/" + bridge.getAppId() + "/lights");
+        
+        JSONObject response = (JSONObject) Connections.getJSON(getURL);
+        
+        
+        for (Lamp lamp : lampsCurrentlyBeingUpdated) {
+            
+            
+            JSONObject lampInformation = (JSONObject) response.get("" + lamp.getId());
+            String lampType = lampInformation.get("type").toString();
+            JSONObject state = (JSONObject) lampInformation.get("state");
+            
+            
+            int[] values = new int[2];
+            
+            if (!lampType.equals("Dimmable light")) {
+            
+                values[0] = Integer.valueOf(state.get("ct").toString());
+                
+            } else {
+                
+                values[0] = previousValues[0];
+                
+            }
+            
+            values[1] = Integer.valueOf(state.get("bri").toString());
+            String on = state.get("on").toString();
+            
+            
+            if (on.equals("true") && values[0] == previousValues[0] && values[1] == previousValues[1]) {
+                
+                toReturn.add(lamp);
+                
+                System.out.println("Added lamp " + lamp.getName());
+                
+            }
+            
+            
+        }
+        
+        return toReturn;
+        
     }
     
     
