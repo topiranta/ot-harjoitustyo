@@ -90,6 +90,7 @@ public class LightCalculator {
     public long getDimmingLength() {
         
         return (long) (this.dimStart.until(dimStop, ChronoUnit.MINUTES));
+        
     }
     
 }
