@@ -9,4 +9,5 @@
 | 26.4. | 4 | Testien kirjoittelua, pom-fiksejä, dokumentaation päivittämistä, javadocia |
 | 3.5. | 9 | Auringonlaskuajan nouto rajapinnasta, LocalDateTime-operaatiot, värilaskenta |
 | 4.5. | 6,5 | Lamppujen automaattinen päivittäminen, lamppujen pudottaminen automaattisesta päivityskierrosta, kaikki perusominaisuudet valmiina |
-|Yht. | 46,0 | |
+| 5.5. | 6 | Viimeiset metodien hiomiset, sovelluksen testailua, JavaDocin täydennys, GitHub-dokumentointi |
+|Yht. | 52,0 | |
