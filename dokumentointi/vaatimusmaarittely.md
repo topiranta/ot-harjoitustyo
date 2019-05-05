@@ -1,8 +1,6 @@
 # Alustava vaatimusmäärittely
 
-## Tietoa
-
-Tämä on alustava vaatimusmäärittely, joka päivittyy ja tarkentuu kurssin myötä.
+*Vaatimusmäärittely 1.0 5.5.2019*
 
 ## Sovelluksen tarkoitus
 
@@ -21,27 +19,27 @@ hahmottelua.
 
 Sovelluksen käyttäjä voi autentikoida sovelluksen lähiverkkoonsa kytketylle Philips Hue Bridge -valo-ohjaimelle. Sovelluksen käyttäjän on muusta yhteydestä 
 tiedettävä valo-ohjaimen IP-osoite lähiverkossa ja käyttäjällä on oltava fyysinen pääsy laitteelle autentikointia varten (autentikointikutsu hyväksytään 
-valo-ohjaimen nappulalla). Autentikoinnin jälkeen autentikointia ei tarvitse suorittaa uudestaan, vaikka sovellus jouduttaisiin käynnistämään uudestaan.
+valo-ohjaimen nappulalla). Autentikoinnin jälkeen autentikointia ei tarvitse suorittaa uudestaan, vaikka sovellus jouduttaisiin käynnistämään uudestaan, vaan autentikointitiedot voi ladata sovelluksen käyttöön.
 
 Lisäksi käyttäjän on asetettava käyttökohteen sijainti koordinaatteinta, jotta auringonlaskun aika voidaan laskea.
 
 ### Sovelluksen peruskäyttö 
 
-* Sovelluksen käyttäjä voi alkukonfiguroinnin jälkeen käynnistää ja lopettaa valojensa automaattisen päivityksen
+* Sovelluksen käyttäjä voi alkukonfiguroinnin jälkeen käynnistää valojensa automaattisen päivityksen ja asettaa sille halutessaan päättymisajan
 * Käyttäjä voi sammuttaa valot
 * Käyttäjä voi myös lisätä tai poistaa yksittäisiä valoja automaattisen päivityksen piiristä 
 * Käyttäjä voi muuttaa alussa tehtyjä konfigurointeja
+* Valo-ohjaimen konfiguroinnin voi tallentaa ja ladata pitkäaikaistallennuksesta
 
 ## Sovelluksen käyttöliittymä
 
-Käyttöliittymä jakautuu alustavasti edellisten vaatimusten perusteella kahteen osaan: konfigurointinäkymään sekä peruskäyttöliittymään.
+Sovelluksella on yksi tekstikäyttöliittymä
 
 ## Teknisiä huomioita
 
 ### Rajapinnat
 
-Sovellus käyttää ainakin Hue-ohjaimen kanssa JSON-rajapintaa. Myös auringonlaskuaika voidaan hakea rajapinnan yli tai vaihtoehtoisesti laskenta voidaan tehdä 
-sovelluksessa itsessään.
+Sovellus käyttää Hue-ohjaimen kanssa JSON-rajapintaa. Myös auringonlaskuaika haetaan [Sunrise Sunset -rajapinnasta](https://sunrise-sunset.org/api).
 
 ### Tiedon tallentaminen
 
@@ -50,8 +48,7 @@ syöttää aina sovellusta käytettäessä.
 
 ## Sovelluksen testaus
 
-Sovellusta on voitava testata myös ilman fyysistä valo-ohjainta, joten testaamista varten sovelluksessa on oltava jonkinlainen valo-ohjaimen 
-emulointimahdollisuus.
+Sovellusta voi pieneltä osin käyttää myös ilman fyysistä valo-ohjainta.
 
 ## Jatkokehitysmahdollisuuksia
 
@@ -61,7 +58,3 @@ emulointimahdollisuus.
   * Käyttölokeja voisi tallentaa myös internetkohteeseen
 * Lokien kerääminen muista toiminnallisuuksista
   * Hue-järjestelmään voi kytkeä esimerkiksi liiketunnistmia, joiden havaintoja voisi kirjata lokiin
-
-## Meta
-
-Tämän vaatimusmäärittelydokumentin versio on 0.1.1 ja se on päivitetty 26.3.2019.
