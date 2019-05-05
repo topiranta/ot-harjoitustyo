@@ -132,7 +132,8 @@ public class LightCalculator {
         }
         
         return "Solar noon is at " + dimStart.toLocalTime().toString() + " and sunset at " + sunsetTime.toLocalTime().toString() + ". \n"
-                + "At " + LocalDateTime.now().toLocalTime().toString() + " calculated color temperature is " + values[0] + " and brightness " + values[1];
+                + "At " + LocalDateTime.now().toLocalTime().toString() + " calculated color temperature is " + values[0] + " and brightness " + values[1] + ". \n"
+                + "Color temperature is a variable between 153 and 500 (153 being the whitest) and brightness between 1 and 254 latter being the brightest value.";
     }
     
 }
