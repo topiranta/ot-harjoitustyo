@@ -129,6 +129,10 @@ public class TextUi {
                 
                 System.out.println(this.application.removeAllLampsFromBeingUpdatedAutomatically());
                 
+            } else if (input.equals("16")) {
+                
+                System.out.println(this.application.getColorCalculatorToString());
+            
             } else {
                 
                 System.out.println("Unknown command! Insert 5 to print all commands.");
@@ -256,6 +260,7 @@ public class TextUi {
         System.out.println("13 - start automatic update");
         System.out.println("14 - remove a single lamp from list of lamps to be automatically updated");
         System.out.println("15 - remove all lamps from the list of lamps to be automatically updated");
+        System.out.println("16 - print sunset time and color values for current setup");
         
         System.out.println("0 - exit");
         System.out.println("");

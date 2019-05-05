@@ -16,6 +16,7 @@ import topiranta.lightapplication.devices.*;
 public class LightCalculator {
     
     private LocalDateTime sunTimesFetched;
+    private LocalDateTime sunsetTime;
     private LocalDateTime dimStart;
     private LocalDateTime dimStop;
     private Bridge bridge;
@@ -40,11 +41,12 @@ public class LightCalculator {
         
         if (receivedTimes.size() == 0) {
             
-            return;
+            throw new Exception("Fetching sunset time failed.");
             
         }
         
         this.sunTimesFetched = LocalDateTime.now();
+        this.sunsetTime = receivedTimes.get(1);
         this.dimStart = receivedTimes.get(0);
         
         if (receivedTimes.get(1).getHour() > 19 || receivedTimes.get(1).toLocalDate().compareTo(LocalDate.now()) > 0 || receivedTimes.get(1).getYear() == 1970) {
@@ -112,6 +114,25 @@ public class LightCalculator {
         
         return (long) (this.dimStart.until(dimStop, ChronoUnit.MINUTES));
         
+    }
+    
+    @Override
+    public String toString() {
+        
+        int[] values = new int[2];
+        
+        try {
+        
+            values = this.getLightValues();
+            
+        } catch (Exception e) {
+            
+            return "Values could not be calculated: " + e.getMessage();
+            
+        }
+        
+        return "Solar noon is at " + dimStart.toLocalTime().toString() + " and sunset at " + sunsetTime.toLocalTime().toString() + ". \n"
+                + "At " + LocalDateTime.now().toLocalTime().toString() + " calculated color temperature is " + values[0] + " and brightness " + values[1];
     }
     
 }

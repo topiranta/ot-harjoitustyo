@@ -328,6 +328,17 @@ public class Application {
     }
     
     /**
+     * Metodi palauttaa väriarvot sekä auringonlasku- ja -huippuajan käyttöliittymälle
+     * @return 
+     */
+    
+    public String getColorCalculatorToString() {
+        
+        return this.lightCalculator.toString();
+        
+    }
+    
+    /**
      * Metodi hakee värilaskimelta uudet sävy- ja kirkkausarvot, jotka päivitetään ehdot täyttäviin lamppuihin.
      * DeviceOperations-luokan metodi lampsToBeUpdated palauttaa tämän metodin käyttöön listan niistä käyttäjän haluamista lampuista,
      * joiden asetuksia toiset sovellukset eivät ole muuttaneet sitten edellisen päivityksen. 
