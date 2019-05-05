@@ -9,8 +9,20 @@ import java.time.*;
 import java.net.*;
 import org.json.simple.*;
 
+/**
+ * Luokka, joka huolehtii auringonlasku- ja huippuaikatiedon saamisesta rajapinnasta.
+ * 
+ */
+
 public class SunTimes {
     
+    /**
+     * Metodi hakee rajapinnasta tiedot siitä, milloin aurinko on korkeimmillaan ja milloin se laskee valo-ohjaimen sijannissa. Mikäli valo-ohjaimelle
+     * ei ole asetettu sijaintitietoja, käyttää metodi Helsingin sijaintia rajapintakutsussa.
+     * @param bridge valo-ohjain, jonka sijainnille tiedot haetaan
+     * @return lista, jossa LocalDateTime-muotoiset arvot auringon huipp- ja laskuajoista
+     * @throws Exception metodi heittää virheen, mikäli toiminto epäonnistuu
+     */
     
     public static ArrayList<LocalDateTime> getSunTimes(Bridge bridge) throws Exception {
         

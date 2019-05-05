@@ -6,6 +6,13 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 import topiranta.lightapplication.devices.*;
 
+/**
+ * Värilaskinolio, joka osaa laskea lampuille sopivat väriarvot niiden sijainnin sekä kellonajan mukaan. Laskin hakee REST-rajapinnasta
+ * tiedon siitä, milloin aurinko on korkeimmillaan ja milloin se laskee valo-ohjaimen sijannissa. Näiden sekä kellonajan
+ * perusteella perusteella se laskee oikean sävyn ja kirkkauden valoille.
+ * 
+ */
+
 public class LightCalculator {
     
     private LocalDateTime sunTimesFetched;
@@ -19,6 +26,13 @@ public class LightCalculator {
         this.refresh();
         
     }
+    
+    /**
+     * Metodi laskimen päivittämiseksi. Metodi hakee uudet ajat auringon huippukorkeudelle sekä auringonlaskulle. Auringon huipputunti asetetaan himmennyksen alkuajankohdaksi.
+     * Loppuajankohdaksi asetetaan auringonlasku, kuitenkin niin, että himmennys päättyy viimeistään klo 20. Metodi tallentaa tiedon, milloin ajat on rajapinnasta
+     * haettu.
+     * @throws Exception metodi heittää virheen, mikäli toiminto epäonnistuu
+     */
     
     public void refresh() throws Exception {
         
@@ -45,6 +59,12 @@ public class LightCalculator {
         
     }
     
+    /**
+     * Metodi valoarvojen laskemiseksi. Metodi tarkistaa, ovatko ajat auringonlaskulle ja huipputunnille ajantasaiset vai tuleeko uudet hakea rajapinnasta.
+     * @return taulukko, jossa uudet arvot värisävylle sekä kirkkaudelle
+     * @throws Exception metodi heittää virheen, mikäli toiminto epäonnistuu
+     */
+    
     public int[] getLightValues() throws Exception {
         
         int[] values = new int[2];
@@ -65,7 +85,8 @@ public class LightCalculator {
         
     }
     
-    public Double getDimCompleteness() {
+    
+    private Double getDimCompleteness() {
         
         long minutesPassed = (long) (this.dimStart.until(LocalDateTime.now(), ChronoUnit.MINUTES));
         
@@ -87,7 +108,7 @@ public class LightCalculator {
         
     }
     
-    public long getDimmingLength() {
+    private long getDimmingLength() {
         
         return (long) (this.dimStart.until(dimStop, ChronoUnit.MINUTES));
         

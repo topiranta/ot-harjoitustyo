@@ -5,7 +5,8 @@ import topiranta.lightapplication.devices.*;
 
 
 /**
- * Luokassa on metodeja, jotka mahdollistavat sovelluksen käyttämisen testimoodissa, jos fyysistä valo-ohjainta ei ole saatavilla
+ * Luokassa on metodeja, jotka mahdollistavat sovelluksen käyttämisen testimoodissa, jos fyysistä valo-ohjainta ei ole saatavilla.
+ * Lisäksi luokka antaa default-arvoja sijainnille.
  *
  */
 
@@ -31,11 +32,21 @@ public class DefaultAndTestValues {
         
     }
     
+    /**
+     * Metodi palauttaa Helsingin leveyskoordinaatin värilaskentaa varten
+     * @return koordinaatti merkkijonona
+     */
+    
     public static String getHelsinkiLat() {
         
         return "60.1706664";
         
     }
+    
+    /**
+     * Metodi palauttaa Helsingin pituuskoordinaatin värilaskentaa varten
+     * @return koordinaatti merkkijonona
+     */
     
     public static String getHelsinkiLng() {
         

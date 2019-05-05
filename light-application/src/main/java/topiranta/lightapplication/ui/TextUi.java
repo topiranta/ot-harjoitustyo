@@ -40,6 +40,7 @@ public class TextUi {
                 
                 this.configureBridge();
                 this.setCoordinates();
+                System.out.println(this.application.getAllLampsFromBridge());
                     
             } else if (input.equals("2")) {
                 
@@ -99,15 +100,34 @@ public class TextUi {
             
             } else if (input.equals("12")) {
                 
-                System.out.println(this.application.updateLamps());
+                ArrayList<String> lampNames = this.application.getAllLampNames();
+                
+                if (lampNames != null && lampNames.size() != 0) {
+                    
+                    for (String lampName : lampNames) {
+                        
+                        System.out.println(lampName);
+                        
+                    }
+                    
+                } else {
+                    
+                    System.out.println("No lamps found");
+                }
             
             } else if (input.equals("13")) {
                 
                 configureAutomaticUpdate();
             
-            } else if (input.equals("99")) {
+            } else if (input.equals("14")) {
                 
-                System.out.println("Oh you! You found a secret testing command. No testing was, however, conducted.");
+                System.out.print("Insert name of the lamp to be removed from the list: ");
+                String lamp = reader.nextLine();
+                System.out.println(this.application.removeLampFromBeingUpdatedAutomatically(lamp));
+            
+            } else if (input.equals("15")) {
+                
+                System.out.println(this.application.removeAllLampsFromBeingUpdatedAutomatically());
                 
             } else {
                 
@@ -230,6 +250,13 @@ public class TextUi {
         System.out.println("7 - turn off all lights");
         System.out.println("8 - save current bridge configuration");
         System.out.println("9 - load existing bridge configuration");
+        System.out.println("10 - show all lamps available");
+        System.out.println("11 - add all available lamps to be automatically updated");
+        System.out.println("12 - print all lamp names");
+        System.out.println("13 - start automatic update");
+        System.out.println("14 - remove a single lamp from list of lamps to be automatically updated");
+        System.out.println("15 - remove all lamps from the list of lamps to be automatically updated");
+        
         System.out.println("0 - exit");
         System.out.println("");
     }

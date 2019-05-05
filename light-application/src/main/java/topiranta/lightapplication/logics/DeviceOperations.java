@@ -83,6 +83,21 @@ public class DeviceOperations {
         return success.get("username").toString();
     }
     
+    /**
+     * Metodi, joka palauttaa listana ne lamput, jotka pidetään automaattisen päivityksen piirissä. Metodi hakee valo-ohjaimelta kaikkien lamppujen tiedot ja päättelee niiden sekä
+     * sille annettujen parametrien avaulla, tuleeko lamppua tällä kertaa päivittää. Jotta lamppu asetetaan päivitettävien listaan,
+     * on sen oltava metodille annetussa käyttäjän määrittämässä listassa, minkä lisäksi lampun arvot eivät saa olla muuttuneet sitten edellisen päivityksen, jotta sovellus ei sotke muiden sovellusten
+     * tekemiä muutoksia lamppujen arvoissa.
+     * Lisäksi metodi ottaa mukaan sellaiset lamput, joiden kirkkaus- ja värisävyarvoiksi on asetettu luku 211, jotta muut sovellukset voivat asettaa lamppuja automaattisen
+     * päivityksen piiriin.
+     * 
+     * @param previousValues edellisessä automaattisessa päivityksessä asetetut arvot, jotta metodi voi tarkistaa, ovatko muut sovellukset muuttaneet arvoja
+     * @param userListOfLampsToUpdate käyttäjän määrittämä automaattisesti päivitettävien lamppujen lista. Vain tällä listalla olevat lamput voivat päätyä metodin palauttamalle listalle
+     * @param bridge valo-ohjain, jolla lamput sijaitsevat
+     * @return lista tällä kertaa automaattisesti päivitettävistä lampusta
+     * @throws Exception 
+     */
+    
     public static ArrayList<Lamp> lampsToBeUpdated(int[] previousValues, ArrayList<Lamp> userListOfLampsToUpdate, Bridge bridge) throws Exception {
         
         ArrayList<Lamp> toReturn = new ArrayList<>();

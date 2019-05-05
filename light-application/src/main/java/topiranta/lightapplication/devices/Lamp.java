@@ -56,6 +56,12 @@ public class Lamp {
         
     }
     
+    /**
+     * Metodi palauttaa lamppukohtaisen URL:n GET-opreaatiolle valo-ohjaimen REST-rajapinnassa
+     * @return URL-olio
+     * @throws Exception    virhe heitetään, mikäli URL on väärin muodostettu 
+     */
+    
     public URL getGetUrl() throws Exception {
         
         URL getUrl = new URL("http://" + this.bridge.getIp() + "/api/" + this.bridge.getAppId() + "/lights/" + id);
@@ -75,11 +81,6 @@ public class Lamp {
         
     }
     
-    public void turnOn() throws Exception {
-        
-        Connections.putJSON(this.getPutUrl(), "{\"on\": true}");
-        
-    }
     
     public String getName() {
         
@@ -87,20 +88,12 @@ public class Lamp {
         
     }
     
-    public boolean lampOn() throws Exception {
-        
-        JSONObject response = (JSONObject) Connections.getJSON(this.getGetUrl());
-        JSONObject state = (JSONObject) response.get("state");
-        
-        if (state.get("on").toString().equals("true")) {
-            
-            return true;
-            
-        }
-        
-        return false;
-        
-    }
+    /**
+     * Metodi lähettää värisävy- ja kirkkausarvot lähetettäväksi fyysiselle lampulle
+     * @param ct color temperature, värin lämmön sävy välillä 153 - 500
+     * @param bri brightness, kirkkaus, arvo välillä 1 - 254
+     * @throws Exception    
+     */
     
     public void setValues(int ct, int bri) throws Exception {
         
