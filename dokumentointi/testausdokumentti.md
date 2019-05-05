@@ -1,14 +1,16 @@
 # Testausdokumentti
 
-*Testausdokumentti ver. 0.4, 26.4.2019*
+*Testausdokumentti ver. 1.0, 5.5.2019*
 
 ## Testit
 
-Sovelluksen testien rakenne noudattaa sovelluksen pakkausrakennetta. Sovelluksen testien rivikattavuus on hieman vajaa 50%, kun käyttöliittymäkoodia ei oteta huomioon. Sovelluksen testit testaavat valo-ohjainolion toimintaa, varsinaista sovelluslogiikkaa sekä URL-yhteydenottometodeja.
+Sovelluksen testien rakenne noudattaa sovelluksen pakkausrakennetta. Sovelluksen testit testaavat valo-ohjainolion toimintaa, varsinaista sovelluslogiikkaa sekä URL-yhteydenottometodeja.
 
 ## Testien ulkopuolisia riippuvuuksia
 
 Koska sovellus käyttää paljon yhteyksiä URL-osotteiden yli, on sovelluksessa testejä, joka käyttävät [JSONPlaceholder-testipalvelua](https://jsonplaceholder.typicode.com/) JSON-tiedon hakemiseen ja sen sisällön oikeellisuuden tarkistamiseen. Tämän vuoksi sanotun palvelun ollessa estynyt palvelemaan testejä tai palvelun muuttuessa ei yksi tai useampi testi mene läpi.
+
+Lisäksi testit tekevät tarkoituksella virheellisiä yhteydenottoja esimerkiksi kehittäjän kotisivuille saadakseen tarkistettua, että sivut palauttavat testeille 404-koodin.
 
 ## Maven, Jacoco, Checkstyle
 
