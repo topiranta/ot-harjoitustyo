@@ -1,6 +1,6 @@
-# Alustava vaatimusmäärittely
+# Vaatimusmäärittely
 
-*Vaatimusmäärittely 1.0 5.5.2019*
+*Vaatimusmäärittely 1.1 5.5.2019*
 
 ## Sovelluksen tarkoitus
 
